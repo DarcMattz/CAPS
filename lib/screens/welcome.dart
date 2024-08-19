@@ -10,7 +10,7 @@ class WelcomeScreen extends StatelessWidget {
         decoration: const BoxDecoration(
           color: Colors.lightBlueAccent,
           image: DecorationImage(
-            image: AssetImage('assets/background.png'),
+            image: AssetImage('assets/images/background.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -23,7 +23,7 @@ class WelcomeScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Image.asset(
-                    'assets/sun.png',
+                    'assets/images/sun.png',
                     width: 120,
                     height: 120,
                   ),
@@ -75,14 +75,13 @@ class WelcomeScreen extends StatelessWidget {
                 Positioned(
                   top: -10,
                   child: Image.asset(
-                    'assets/koala.png',
+                    'assets/images/koala.png',
                     width: 160,
                     height: 160,
                   ),
                 ),
               ],
             ),
-            //to home screen
             ElevatedButton(
               onPressed: () {
                 Navigator.pushReplacement(
@@ -103,6 +102,7 @@ class WelcomeScreen extends StatelessWidget {
               child: const Text(
                 'Continue',
                 style: TextStyle(
+                  color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
@@ -115,7 +115,7 @@ class WelcomeScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20.0, right: 30),
                   child: Image.asset(
-                    'assets/cow.png',
+                    'assets/images/cow.png',
                     width: 200,
                     height: 200,
                   ),

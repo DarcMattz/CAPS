@@ -103,9 +103,7 @@ class SettingsDialog extends StatelessWidget {
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
               ),
-              onPressed: () {
-                // Handle registration
-              },
+              onPressed: () {},
               child: Text(
                 'Register this Account',
                 style: TextStyle(

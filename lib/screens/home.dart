@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/dialogs/settings.dart';
+import 'package:flutter_application_1/screens/modules.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -9,16 +10,14 @@ class HomeScreen extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/background.png'),
+            image: AssetImage('assets/images/background.png'),
             fit: BoxFit.cover,
           ),
         ),
         child: Column(
           children: [
-            // Username and Settings
             Padding(
-              padding:
-                  const EdgeInsets.only(top: 30.0, left: 16.0, right: 16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -26,7 +25,8 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 25,
-                        backgroundImage: AssetImage('assets/profile.png'),
+                        backgroundImage:
+                            AssetImage('assets/images/profile.png'),
                       ),
                       SizedBox(width: 10),
                       Container(
@@ -62,47 +62,49 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-
             SizedBox(height: 30),
-
-            // Learning is Fun
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 30.0),
-              padding: const EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    'Learning is Fun',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.purple,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ModuleListScreen()));
+              },
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 30.0),
+                padding: const EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  Image.asset(
-                    'assets/learning.png',
-                    height: 150,
-                  ),
-                ],
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      'Learning is Fun',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.purple,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Image.asset(
+                      'assets/images/learning.png',
+                      height: 150,
+                    ),
+                  ],
+                ),
               ),
             ),
-
             SizedBox(height: 20),
-
-            // Let's Explore More
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 30.0),
               padding: const EdgeInsets.all(16.0),
@@ -130,22 +132,18 @@ class HomeScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   Image.asset(
-                    'assets/explore.png',
+                    'assets/images/explore.png',
                     height: 150,
                   ),
                 ],
               ),
             ),
-
-            // Spacer
             Spacer(),
-
-            // Lion Image
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Image.asset(
-                  'assets/lion.png',
+                  'assets/images/lion.png',
                   height: 200,
                 ),
               ],
