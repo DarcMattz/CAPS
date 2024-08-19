@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/dialogs/settings.dart';
-import 'package:flutter_application_1/screens/modules.dart';
+import 'package:flutter_application_1/screens/explore.dart';
+import 'package:flutter_application_1/screens/learning.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -68,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => ModuleListScreen()));
+                        builder: (context) => LearningListScreen()));
               },
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -105,37 +106,45 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 30.0),
-              padding: const EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    'Let\'s Explore more',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.purple,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ExploreListScreen()));
+              },
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 30.0),
+                padding: const EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  Image.asset(
-                    'assets/images/explore.png',
-                    height: 150,
-                  ),
-                ],
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      'Let\'s Explore more',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.purple,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Image.asset(
+                      'assets/images/explore.png',
+                      height: 150,
+                    ),
+                  ],
+                ),
               ),
             ),
             Spacer(),

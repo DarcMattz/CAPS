@@ -2,21 +2,19 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/modules.dart';
 
-class ModuleListScreen extends StatefulWidget {
+class LearningListScreen extends StatefulWidget {
   @override
-  State<ModuleListScreen> createState() => _ModuleListScreenState();
+  State<LearningListScreen> createState() => _LearningListScreenState();
 }
 
-class _ModuleListScreenState extends State<ModuleListScreen> {
+class _LearningListScreenState extends State<LearningListScreen> {
   int _currentIndex = 0;
 
   final List<Module> modules = [
-    Module(title: "All aboard", imagePath: 'assets/images/all_aboard.png'),
-    Module(title: "Phonics", imagePath: 'assets/images/phonics.png'),
-    Module(
-        title: "Science & Health",
-        imagePath: 'assets/images/science_and_health.png'),
-    Module(title: "Mathematics", imagePath: 'assets/images/mathematics.png'),
+    Module(type: "learning", imagePath: 'assets/images/all_aboard.png'),
+    Module(type: "learning", imagePath: 'assets/images/phonics.png'),
+    Module(type: "learning", imagePath: 'assets/images/science_and_health.png'),
+    Module(type: "learning", imagePath: 'assets/images/mathematics.png'),
   ];
 
   @override

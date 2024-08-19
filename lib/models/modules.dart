@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Module {
-  final String title;
+  final String type;
   final String imagePath;
 
-  Module({required this.title, required this.imagePath});
+  Module({required this.type, required this.imagePath});
 }
 
 class ModuleCard extends StatelessWidget {
@@ -50,7 +50,15 @@ class ModuleCard extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {},
-                  child: Text('Learn'),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      module.type == 'learning'
+                          ? Text('Learn')
+                          : Text("Explore"),
+                      Icon(Icons.play_arrow_rounded),
+                    ],
+                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     foregroundColor: Colors.white,
