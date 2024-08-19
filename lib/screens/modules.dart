@@ -2,7 +2,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/modules.dart';
 
-class ModuleListScreen extends StatelessWidget {
+class ModuleListScreen extends StatefulWidget {
+  @override
+  State<ModuleListScreen> createState() => _ModuleListScreenState();
+}
+
+class _ModuleListScreenState extends State<ModuleListScreen> {
+  int _currentIndex = 0;
+
   final List<Module> modules = [
     Module(title: "All aboard", imagePath: 'assets/images/all_aboard.png'),
     Module(title: "Phonics", imagePath: 'assets/images/phonics.png'),
@@ -45,35 +52,52 @@ class ModuleListScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: CarouselSlider.builder(
-                options: CarouselOptions(
-                  height: 320,
-                  enlargeCenterPage: true,
-                  enableInfiniteScroll: false,
-                  initialPage: 0,
-                  autoPlay: false,
-                  viewportFraction: 0.7,
-                ),
-                itemCount: modules.length,
-                itemBuilder: (context, index, realIndex) {
-                  return ModuleCard(module: modules[index]);
-                },
-              ),
-            ),
-            Center(
-              child: Row(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(modules.length, (index) {
-                  return Container(
-                    margin: EdgeInsets.symmetric(horizontal: 4.0),
-                    width: 10,
-                    height: 10,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.grey,
+                children: [
+                  CarouselSlider.builder(
+                    options: CarouselOptions(
+                      height: 320,
+                      enlargeCenterPage: true,
+                      enableInfiniteScroll: false,
+                      initialPage: 0,
+                      autoPlay: false,
+                      viewportFraction: 0.7,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          _currentIndex = index;
+                        });
+                      },
                     ),
-                  );
-                }),
+                    itemCount: modules.length,
+                    itemBuilder: (context, index, realIndex) {
+                      return ModuleCard(module: modules[index]);
+                    },
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(modules.length, (index) {
+                        return GestureDetector(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 4.0),
+                            width: 10,
+                            height: 10,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: _currentIndex == index
+                                  ? Colors.blueAccent
+                                  : Colors.grey,
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
+                  ),
+                ],
               ),
             ),
             Row(
