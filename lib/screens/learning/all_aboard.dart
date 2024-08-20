@@ -1,36 +1,34 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/modules.dart';
-import 'package:flutter_application_1/screens/learning/all_aboard.dart';
-import 'package:flutter_application_1/screens/learning/mathematics.dart';
-import 'package:flutter_application_1/screens/learning/phonics.dart';
-import 'package:flutter_application_1/screens/learning/science.dart';
+import 'package:flutter_application_1/models/building.dart';
 
-class LearningListScreen extends StatefulWidget {
+class AllAboardScreen extends StatefulWidget {
+  const AllAboardScreen({super.key});
+
   @override
-  State<LearningListScreen> createState() => _LearningListScreenState();
+  State<AllAboardScreen> createState() => _AllAboardScreenState();
 }
 
-class _LearningListScreenState extends State<LearningListScreen> {
+class _AllAboardScreenState extends State<AllAboardScreen> {
   int _currentIndex = 0;
 
-  final List<Module> modules = [
-    Module(
-        type: "learning",
-        imagePath: 'assets/images/all_aboard.png',
+  final List<Building> buildings = [
+    Building(
+        module: "all_aboard",
+        imagePath: 'assets/images/shapes.png',
         route: AllAboardScreen()),
-    Module(
-        type: "learning",
-        imagePath: 'assets/images/phonics.png',
-        route: PhonicsScreen()),
-    Module(
-        type: "learning",
-        imagePath: 'assets/images/science_and_health.png',
-        route: ScienceHealthScreen()),
-    Module(
-        type: "learning",
-        imagePath: 'assets/images/mathematics.png',
-        route: MathematicsScreen()),
+    Building(
+        module: "all_aboard",
+        imagePath: 'assets/images/quiz_lock.png',
+        route: AllAboardScreen()),
+    Building(
+        module: "all_aboard",
+        imagePath: 'assets/images/abc.png',
+        route: AllAboardScreen()),
+    Building(
+        module: "all_aboard ",
+        imagePath: 'assets/images/quiz.png',
+        route: AllAboardScreen()),
   ];
 
   @override
@@ -41,7 +39,7 @@ class _LearningListScreenState extends State<LearningListScreen> {
         decoration: const BoxDecoration(
           color: Colors.lightBlueAccent,
           image: DecorationImage(
-            image: AssetImage('assets/images/background.png'),
+            image: AssetImage('assets/images/background_road.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -68,12 +66,11 @@ class _LearningListScreenState extends State<LearningListScreen> {
               ),
               Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     CarouselSlider.builder(
                       options: CarouselOptions(
-                        height: 320,
-                        enlargeCenterPage: true,
+                        height: 290,
                         enableInfiniteScroll: false,
                         initialPage: 0,
                         autoPlay: false,
@@ -84,18 +81,15 @@ class _LearningListScreenState extends State<LearningListScreen> {
                           });
                         },
                       ),
-                      itemCount: modules.length,
+                      itemCount: buildings.length,
                       itemBuilder: (context, index, realIndex) {
-                        return ModuleCard(module: modules[index]);
+                        return BuildingCard(building: buildings[index]);
                       },
-                    ),
-                    SizedBox(
-                      height: 16,
                     ),
                     Center(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(modules.length, (index) {
+                        children: List.generate(buildings.length, (index) {
                           return GestureDetector(
                             child: Container(
                               margin: EdgeInsets.symmetric(horizontal: 4.0),
@@ -112,21 +106,11 @@ class _LearningListScreenState extends State<LearningListScreen> {
                         }),
                       ),
                     ),
+                    SizedBox(
+                      height: 50,
+                    ),
                   ],
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0, right: 30),
-                    child: Image.asset(
-                      'assets/images/panda.png',
-                      width: 200,
-                      height: 200,
-                    ),
-                  ),
-                ],
               ),
             ],
           ),

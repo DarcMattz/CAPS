@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class Module {
   final String type;
   final String imagePath;
+  final Widget route;
 
-  Module({required this.type, required this.imagePath});
+  Module({required this.type, required this.imagePath, required this.route});
 }
 
 class ModuleCard extends StatelessWidget {
@@ -49,7 +50,12 @@ class ModuleCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => module.route),
+                    );
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
