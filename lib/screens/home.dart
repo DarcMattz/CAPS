@@ -48,18 +48,19 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    GestureDetector(
-                      onTap: () {
+                    IconButton(
+                      onPressed: () {
                         showDialog(
                           context: context,
                           builder: (context) => SettingsDialog(),
                         );
                       },
-                      child: Icon(
+                      icon: Icon(
                         Icons.settings,
                         size: 30,
                         color: Colors.white,
                       ),
+                      highlightColor: Colors.grey,
                     ),
                   ],
                 ),
