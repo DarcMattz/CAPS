@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/building.dart';
+import 'package:flutter_application_1/components/building.dart';
+import 'package:flutter_application_1/components/nice_button.dart';
 
 class ScienceHealthScreen extends StatefulWidget {
   const ScienceHealthScreen({super.key});
@@ -13,27 +14,27 @@ class _ScienceHealthScreenState extends State<ScienceHealthScreen> {
   int _currentIndex = 0;
 
   final List<Building> buildings = [
-    Building(
+    const Building(
         module: "science",
         imagePath: 'assets/images/body.png',
         route: ScienceHealthScreen()),
-    Building(
+    const Building(
         module: "science",
         imagePath: 'assets/images/quiz_lock.png',
         route: ScienceHealthScreen()),
-    Building(
+    const Building(
         module: "science",
         imagePath: 'assets/images/senses.png',
         route: ScienceHealthScreen()),
-    Building(
+    const Building(
         module: "science ",
         imagePath: 'assets/images/quiz.png',
         route: ScienceHealthScreen()),
-    Building(
+    const Building(
         module: "science",
         imagePath: 'assets/images/care.png',
         route: ScienceHealthScreen()),
-    Building(
+    const Building(
         module: "science ",
         imagePath: 'assets/images/quiz.png',
         route: ScienceHealthScreen()),
@@ -57,19 +58,15 @@ class _ScienceHealthScreenState extends State<ScienceHealthScreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: ElevatedButton.icon(
-                  onPressed: () {
+                child: NiceButton(
+                  label: "Back",
+                  color: Colors.yellow,
+                  shadowColor: Colors.yellow[800]!,
+                  icon: Icons.arrow_left_rounded,
+                  iconSize: 45,
+                  route: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.arrow_back),
-                  label: Text('Back'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.yellow,
-                    foregroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
                 ),
               ),
               Expanded(
@@ -91,7 +88,7 @@ class _ScienceHealthScreenState extends State<ScienceHealthScreen> {
                       ),
                       itemCount: buildings.length,
                       itemBuilder: (context, index, realIndex) {
-                        return BuildingCard(building: buildings[index]);
+                        return buildings[index];
                       },
                     ),
                     Center(
@@ -100,7 +97,8 @@ class _ScienceHealthScreenState extends State<ScienceHealthScreen> {
                         children: List.generate(buildings.length, (index) {
                           return GestureDetector(
                             child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 4.0),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 4.0),
                               width: 10,
                               height: 10,
                               decoration: BoxDecoration(
@@ -114,7 +112,7 @@ class _ScienceHealthScreenState extends State<ScienceHealthScreen> {
                         }),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                   ],

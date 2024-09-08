@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/building.dart';
+import 'package:flutter_application_1/components/building.dart';
+import 'package:flutter_application_1/components/nice_button.dart';
 
 class PhonicsScreen extends StatefulWidget {
   const PhonicsScreen({super.key});
@@ -13,11 +14,11 @@ class _PhonicsScreenState extends State<PhonicsScreen> {
   int _currentIndex = 0;
 
   final List<Building> buildings = [
-    Building(
+    const Building(
         module: "phonics",
         imagePath: 'assets/images/vowels.png',
         route: PhonicsScreen()),
-    Building(
+    const Building(
         module: "phonics",
         imagePath: 'assets/images/quiz_lock.png',
         route: PhonicsScreen()),
@@ -41,19 +42,15 @@ class _PhonicsScreenState extends State<PhonicsScreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: ElevatedButton.icon(
-                  onPressed: () {
+                child: NiceButton(
+                  label: "Back",
+                  color: Colors.yellow,
+                  shadowColor: Colors.yellow[800]!,
+                  icon: Icons.arrow_left_rounded,
+                  iconSize: 45,
+                  route: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.arrow_back),
-                  label: Text('Back'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.yellow,
-                    foregroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
                 ),
               ),
               Expanded(
@@ -75,7 +72,7 @@ class _PhonicsScreenState extends State<PhonicsScreen> {
                       ),
                       itemCount: buildings.length,
                       itemBuilder: (context, index, realIndex) {
-                        return BuildingCard(building: buildings[index]);
+                        return buildings[index];
                       },
                     ),
                     Center(
@@ -84,7 +81,8 @@ class _PhonicsScreenState extends State<PhonicsScreen> {
                         children: List.generate(buildings.length, (index) {
                           return GestureDetector(
                             child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 4.0),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 4.0),
                               width: 10,
                               height: 10,
                               decoration: BoxDecoration(
@@ -98,7 +96,7 @@ class _PhonicsScreenState extends State<PhonicsScreen> {
                         }),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                   ],

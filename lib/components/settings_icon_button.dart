@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
-class IconButtonWidget extends StatelessWidget {
+class SettingsIconButton extends StatelessWidget {
   final IconData icon;
   final Color color;
   final String label;
 
-  const IconButtonWidget({
-    Key? key,
+  const SettingsIconButton({
+    super.key,
     required this.icon,
     required this.color,
     required this.label,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +22,10 @@ class IconButtonWidget extends StatelessWidget {
           backgroundColor: color,
           child: Icon(icon, color: Colors.white, size: 30),
         ),
-        SizedBox(height: 8),
+        const Gap(8),
         Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.bold,
             color: Colors.black54,

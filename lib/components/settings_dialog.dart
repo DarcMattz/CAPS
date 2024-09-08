@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/button_settings.dart';
+import 'package:flutter_application_1/components/settings_icon_button.dart';
+import 'package:gap/gap.dart';
 
 class SettingsDialog extends StatelessWidget {
+  const SettingsDialog({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -20,8 +23,8 @@ class SettingsDialog extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(width: 20),
-                Text(
+                const SizedBox(width: 20),
+                const Text(
                   'SETTINGS',
                   style: TextStyle(
                     fontSize: 24,
@@ -33,45 +36,45 @@ class SettingsDialog extends StatelessWidget {
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.close,
                     color: Colors.purple,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 20),
-            Row(
+            const Gap(20),
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                IconButtonWidget(
+                SettingsIconButton(
                   icon: Icons.volume_up,
                   color: Colors.blue,
                   label: 'Sound',
                 ),
-                IconButtonWidget(
+                SettingsIconButton(
                   icon: Icons.person,
                   color: Colors.green,
                   label: 'Profile',
                 ),
-                IconButtonWidget(
+                SettingsIconButton(
                   icon: Icons.bar_chart,
                   color: Colors.purple,
                   label: 'Stats',
                 ),
-                // IconButtonWidget(
-                //   icon: Icons.school,
-                //   color: Colors.orange,
-                //   label: 'Nursery',
-                // ),
+                SettingsIconButton(
+                  icon: Icons.language,
+                  color: Colors.orange,
+                  label: 'Language',
+                ),
               ],
             ),
-            SizedBox(height: 20),
-            TextField(
+            const Gap(20),
+            const TextField(
               decoration: InputDecoration(hintText: "Enter your Username"),
               textAlign: TextAlign.center,
             ),
-            Text(
+            const Text(
               'username',
               style: TextStyle(
                 fontSize: 18,
@@ -79,8 +82,8 @@ class SettingsDialog extends StatelessWidget {
                 color: Colors.black54,
               ),
             ),
-            SizedBox(height: 20),
-            Row(
+            const Gap(20),
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.save, color: Colors.black54),
@@ -94,17 +97,18 @@ class SettingsDialog extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 10),
+            const Gap(10),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.orange,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
               ),
               onPressed: () {},
-              child: Text(
+              child: const Text(
                 'Register this Account',
                 style: TextStyle(
                   fontSize: 16,

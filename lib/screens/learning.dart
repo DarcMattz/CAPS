@@ -1,12 +1,15 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/modules.dart';
+import 'package:flutter_application_1/components/nice_button.dart';
+import 'package:flutter_application_1/components/modules.dart';
 import 'package:flutter_application_1/screens/learning/all_aboard.dart';
 import 'package:flutter_application_1/screens/learning/mathematics.dart';
 import 'package:flutter_application_1/screens/learning/phonics.dart';
 import 'package:flutter_application_1/screens/learning/science.dart';
 
 class LearningListScreen extends StatefulWidget {
+  const LearningListScreen({super.key});
+
   @override
   State<LearningListScreen> createState() => _LearningListScreenState();
 }
@@ -18,19 +21,19 @@ class _LearningListScreenState extends State<LearningListScreen> {
     Module(
         type: "learning",
         imagePath: 'assets/images/all_aboard.png',
-        route: AllAboardScreen()),
+        route: const AllAboardScreen()),
     Module(
         type: "learning",
         imagePath: 'assets/images/phonics.png',
-        route: PhonicsScreen()),
+        route: const PhonicsScreen()),
     Module(
         type: "learning",
         imagePath: 'assets/images/science_and_health.png',
-        route: ScienceHealthScreen()),
+        route: const ScienceHealthScreen()),
     Module(
         type: "learning",
         imagePath: 'assets/images/mathematics.png',
-        route: MathematicsScreen()),
+        route: const MathematicsScreen()),
   ];
 
   @override
@@ -51,19 +54,15 @@ class _LearningListScreenState extends State<LearningListScreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: ElevatedButton.icon(
-                  onPressed: () {
+                child: NiceButton(
+                  label: "Back",
+                  color: Colors.yellow,
+                  shadowColor: Colors.yellow[800]!,
+                  icon: Icons.arrow_left_rounded,
+                  iconSize: 45,
+                  route: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.arrow_back),
-                  label: Text('Back'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.yellow,
-                    foregroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
                 ),
               ),
               Expanded(
@@ -89,7 +88,7 @@ class _LearningListScreenState extends State<LearningListScreen> {
                         return ModuleCard(module: modules[index]);
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Center(
@@ -98,7 +97,8 @@ class _LearningListScreenState extends State<LearningListScreen> {
                         children: List.generate(modules.length, (index) {
                           return GestureDetector(
                             child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 4.0),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 4.0),
                               width: 10,
                               height: 10,
                               decoration: BoxDecoration(
