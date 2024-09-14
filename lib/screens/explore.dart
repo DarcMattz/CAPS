@@ -6,6 +6,8 @@ import 'package:flutter_application_1/screens/explore/geography.dart';
 import 'package:flutter_application_1/screens/explore/play.dart';
 
 class ExploreListScreen extends StatefulWidget {
+  const ExploreListScreen({super.key});
+
   @override
   State<ExploreListScreen> createState() => _ExploreListScreenState();
 }
@@ -17,11 +19,11 @@ class _ExploreListScreenState extends State<ExploreListScreen> {
     Module(
         type: "explore",
         imagePath: 'assets/images/geography.png',
-        route: GeographyScreen()),
+        route: const GeographyScreen()),
     Module(
         type: "explore",
         imagePath: 'assets/images/play.png',
-        route: PlayScreen()),
+        route: const PlayScreen()),
   ];
 
   @override
@@ -76,7 +78,7 @@ class _ExploreListScreenState extends State<ExploreListScreen> {
                         return ModuleCard(module: modules[index]);
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Center(
@@ -85,7 +87,8 @@ class _ExploreListScreenState extends State<ExploreListScreen> {
                         children: List.generate(modules.length, (index) {
                           return GestureDetector(
                             child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 4.0),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 4.0),
                               width: 10,
                               height: 10,
                               decoration: BoxDecoration(

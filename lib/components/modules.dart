@@ -15,7 +15,7 @@ class Module {
 class ModuleCard extends StatelessWidget {
   final Module module;
 
-  ModuleCard({required this.module});
+  const ModuleCard({super.key, required this.module});
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +24,8 @@ class ModuleCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          const BoxShadow(
+        boxShadow: const [
+          BoxShadow(
             color: Colors.black12,
             blurRadius: 10,
             offset: Offset(0, 4),

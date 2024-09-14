@@ -92,6 +92,7 @@ class _NiceButtonState extends State<NiceButton> {
                       ),
                     ),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Icon(
                           widget.icon,
