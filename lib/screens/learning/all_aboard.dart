@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/building.dart';
 import 'package:flutter_application_1/components/nice_button.dart';
+import 'package:flutter_application_1/screens/learning/all_aboard/abc_start.dart';
+import 'package:flutter_application_1/screens/learning/all_aboard/shapes_quiz.dart';
 import 'package:flutter_application_1/screens/learning/all_aboard/shapes_start.dart';
 
 class AllAboardScreen extends StatefulWidget {
@@ -22,15 +24,15 @@ class _AllAboardScreenState extends State<AllAboardScreen> {
     const Building(
         module: "all_aboard",
         imagePath: 'assets/images/quiz_lock.png',
-        route: AllAboardScreen()),
+        route: ShapesQuizScreen()),
     const Building(
         module: "all_aboard",
         imagePath: 'assets/images/abc.png',
-        route: AllAboardScreen()),
+        route: AbcStartScreen()),
     const Building(
         module: "all_aboard ",
         imagePath: 'assets/images/quiz.png',
-        route: AllAboardScreen()),
+        route: ShapesQuizScreen()),
   ];
 
   @override

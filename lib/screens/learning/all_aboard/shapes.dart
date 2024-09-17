@@ -1,8 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/components/finish_dialog.dart';
-import 'package:flutter_application_1/components/lesson_card.dart';
+import 'package:flutter_application_1/components/letter_card.dart';
 import 'package:flutter_application_1/components/nice_button.dart';
+import 'package:flutter_application_1/components/shape_card.dart';
+import 'package:flutter_application_1/models/shape.dart';
 import 'package:gap/gap.dart';
 
 class ShapesScreen extends StatefulWidget {
@@ -14,31 +15,32 @@ class ShapesScreen extends StatefulWidget {
 
 class _ShapesScreenState extends State<ShapesScreen> {
   int _currentIndex = 0;
+  final CarouselSliderController _carCon = CarouselSliderController();
 
-  final List shapes = [
-    const LessonCard(
+  final List<Shape> shapes = [
+    Shape(
+      label: 'Circle',
       imagePath: 'assets/images/circle.png',
-      cardTitle: 'Circle',
     ),
-    const LessonCard(
+    Shape(
+      label: 'Square',
       imagePath: 'assets/images/square.png',
-      cardTitle: 'Square',
     ),
-    const LessonCard(
+    Shape(
+      label: 'Triangle',
       imagePath: 'assets/images/triangle.png',
-      cardTitle: 'Triangle',
     ),
-    const LessonCard(
+    Shape(
+      label: 'Star',
       imagePath: 'assets/images/star.png',
-      cardTitle: 'Star',
     ),
-    const LessonCard(
+    Shape(
+      label: 'Rectangle',
       imagePath: 'assets/images/rectangle.png',
-      cardTitle: 'Rectangle',
     ),
-    const LessonCard(
+    Shape(
+      label: 'Oval',
       imagePath: 'assets/images/oval.png',
-      cardTitle: 'Oval',
     ),
   ];
 
@@ -57,45 +59,25 @@ class _ShapesScreenState extends State<ShapesScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: NiceButton(
-                      label: "Back",
-                      color: Colors.yellow,
-                      shadowColor: Colors.yellow[800]!,
-                      icon: Icons.close,
-                      iconSize: 30,
-                      route: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: NiceButton(
-                      label: "Done",
-                      color: const Color.fromARGB(255, 87, 210, 91),
-                      shadowColor: Colors.green[800]!,
-                      icon: Icons.check,
-                      iconSize: 30,
-                      route: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) => const FinishDialog(),
-                        );
-                      },
-                    ),
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: NiceButton(
+                  label: "Back",
+                  color: Colors.yellow,
+                  shadowColor: Colors.yellow[800]!,
+                  icon: Icons.close,
+                  iconSize: 30,
+                  route: () {
+                    Navigator.pop(context);
+                  },
+                ),
               ),
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     CarouselSlider.builder(
+                      carouselController: _carCon,
                       options: CarouselOptions(
                         height: 400,
                         enlargeCenterPage: true,
@@ -118,14 +100,19 @@ class _ShapesScreenState extends State<ShapesScreen> {
                               builder: (BuildContext context) {
                                 return AlertDialog(
                                   title: Text(
-                                    shapes[index].cardTitle,
+                                    shapes[index].label,
                                     textAlign: TextAlign.center,
                                   ),
                                 );
                               },
                             );
                           },
-                          child: shapes[index],
+                          child: ShapeCard(
+                            shape: shapes[index],
+                            carCon: _carCon,
+                            currentIndex: _currentIndex,
+                            totalShapes: shapes.length,
+                          ),
                         );
                       },
                     ),
@@ -171,26 +158,6 @@ class _ShapesScreenState extends State<ShapesScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  void _showFinishedDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('End of Carousel'),
-          content: const Text('You have reached the end of the carousel.'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Close the dialog
-              },
-              child: const Text('OK'),
-            ),
-          ],
-        );
-      },
     );
   }
 }
