@@ -23,7 +23,7 @@ class _AllAboardScreenState extends State<AllAboardScreen> {
         route: ShapesStartScreen()),
     const Building(
         module: "all_aboard",
-        imagePath: 'assets/images/quiz_lock.png',
+        imagePath: 'assets/images/quiz.png',
         route: ShapesQuizScreen()),
     const Building(
         module: "all_aboard",

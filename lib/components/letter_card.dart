@@ -1,21 +1,17 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/components/finish_module_dialog.dart';
-import 'package:flutter_application_1/models/letter.dart';
-import 'package:flutter_application_1/screens/learning/all_aboard/shapes_quiz.dart';
 
 class LetterCard extends StatefulWidget {
-  final Letter letter;
-  final CarouselSliderController? carCon;
-  final int currentIndex;
-  final int totalShapes;
+  final String label;
+  final String imagePath;
+  final void Function() nextCallback;
+  final void Function() prevCallback;
 
   const LetterCard({
     super.key,
-    required this.letter,
-    this.carCon,
-    required this.currentIndex,
-    required this.totalShapes,
+    required this.nextCallback,
+    required this.prevCallback,
+    required this.label,
+    required this.imagePath,
   });
 
   @override
@@ -71,9 +67,11 @@ class _LetterCardState extends State<LetterCard> {
                       borderRadius: const BorderRadius.all(Radius.circular(16)),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          widget.letter.imagePath,
-                          fit: BoxFit.contain,
+                        child: Center(
+                          child: Image.asset(
+                            widget.imagePath,
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
                     ),
@@ -88,33 +86,18 @@ class _LetterCardState extends State<LetterCard> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  onPressed: () {
-                    if (widget.carCon != null) {
-                      widget.carCon!.previousPage();
-                    }
-                  },
+                  onPressed: widget.prevCallback,
                   icon: const Icon(Icons.arrow_back),
                 ),
                 Text(
-                  widget.letter.label,
+                  widget.label,
                   style: const TextStyle(
                     fontSize: 28,
                     color: Colors.orange,
                   ),
                 ),
                 IconButton(
-                  onPressed: () {
-                    if (widget.currentIndex == widget.totalShapes - 1) {
-                      showDialog(
-                        context: context,
-                        builder: (context) => const FinishModuleDialog(
-                          route: ShapesQuizScreen(),
-                        ),
-                      );
-                    } else if (widget.carCon != null) {
-                      widget.carCon!.nextPage();
-                    }
-                  },
+                  onPressed: widget.nextCallback,
                   icon: const Icon(Icons.arrow_forward),
                 ),
               ],
