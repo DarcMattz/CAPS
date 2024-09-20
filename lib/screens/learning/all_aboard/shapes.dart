@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/components/letter_card.dart';
 import 'package:flutter_application_1/components/nice_button.dart';
 import 'package:flutter_application_1/components/shape_card.dart';
 import 'package:flutter_application_1/models/shape.dart';
