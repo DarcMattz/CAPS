@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/nice_button.dart';
 import 'package:flutter_application_1/components/modules.dart';
 import 'package:flutter_application_1/screens/learning/all_aboard.dart';
-import 'package:flutter_application_1/screens/learning/mathematics.dart';
+import 'package:flutter_application_1/screens/learning/mathematics/mathematics.dart';
 import 'package:flutter_application_1/screens/learning/phonics.dart';
 import 'package:flutter_application_1/screens/learning/science.dart';
 
