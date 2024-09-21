@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/building.dart';
 import 'package:flutter_application_1/components/nice_button.dart';
+import 'package:flutter_application_1/screens/learning/mathematics/numbers_start.dart';
 
 class MathematicsScreen extends StatefulWidget {
   const MathematicsScreen({super.key});
@@ -17,7 +18,7 @@ class _MathematicsScreenState extends State<MathematicsScreen> {
     const Building(
         module: "mathematics",
         imagePath: 'assets/images/numbers.png',
-        route: MathematicsScreen()),
+        route: NumbersStartScreen()),
     const Building(
         module: "mathematics",
         imagePath: 'assets/images/quiz_lock.png',

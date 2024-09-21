@@ -37,9 +37,9 @@ class ModuleCard extends StatelessWidget {
         children: [
           Flexible(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(10.0),
               child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(16)),
+                borderRadius: const BorderRadius.all(Radius.circular(6)),
                 child: Image.asset(
                   module.imagePath,
                   fit: BoxFit.cover,
@@ -49,7 +49,7 @@ class ModuleCard extends StatelessWidget {
           ),
           Padding(
             padding:
-                const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
+                const EdgeInsets.all(10.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
