@@ -1,44 +1,29 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/components/building.dart';
 import 'package:flutter_application_1/components/nice_button.dart';
-import 'package:flutter_application_1/components/modules.dart';
-import 'package:flutter_application_1/screens/learning/all_aboard.dart';
-import 'package:flutter_application_1/screens/learning/filipino/filipino.dart';
-import 'package:flutter_application_1/screens/learning/mathematics/mathematics.dart';
-import 'package:flutter_application_1/screens/learning/phonics.dart';
-import 'package:flutter_application_1/screens/learning/science.dart';
+import 'package:flutter_application_1/screens/learning/filipino/abakada_quiz.dart';
+import 'package:flutter_application_1/screens/learning/filipino/abakada_start.dart';
 
-class LearningListScreen extends StatefulWidget {
-  const LearningListScreen({super.key});
+class FilipinoScreen extends StatefulWidget {
+  const FilipinoScreen({super.key});
 
   @override
-  State<LearningListScreen> createState() => _LearningListScreenState();
+  State<FilipinoScreen> createState() => _FilipinoScreenState();
 }
 
-class _LearningListScreenState extends State<LearningListScreen> {
+class _FilipinoScreenState extends State<FilipinoScreen> {
   int _currentIndex = 0;
 
-  final List<Module> modules = [
-    Module(
-        type: "learning",
-        imagePath: 'assets/images/all_aboard.png',
-        route: const AllAboardScreen()),
-    Module(
-        type: "learning",
-        imagePath: 'assets/images/phonics.png',
-        route: const PhonicsScreen()),
-    Module(
-        type: "learning",
-        imagePath: 'assets/images/science_and_health.png',
-        route: const ScienceHealthScreen()),
-    Module(
-        type: "learning",
-        imagePath: 'assets/images/mathematics.png',
-        route: const MathematicsScreen()),
-    Module(
-        type: "learning",
-        imagePath: 'assets/images/filipino/filipino.png',
-        route: const FilipinoScreen()),
+  final List<Building> buildings = [
+    const Building(
+        module: "filipino",
+        imagePath: 'assets/images/filipino/abakada.png',
+        route: AbakadaStartScreen()),
+    const Building(
+        module: "filipino ",
+        imagePath: 'assets/images/quiz.png',
+        route: AbakadaQuizScreen()),
   ];
 
   @override
@@ -49,7 +34,7 @@ class _LearningListScreenState extends State<LearningListScreen> {
         decoration: const BoxDecoration(
           color: Colors.lightBlueAccent,
           image: DecorationImage(
-            image: AssetImage('assets/images/background.png'),
+            image: AssetImage('assets/images/background_road.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -63,8 +48,8 @@ class _LearningListScreenState extends State<LearningListScreen> {
                   label: "Back",
                   color: Colors.yellow,
                   shadowColor: Colors.yellow[800]!,
-                  icon: Icons.arrow_back,
-                  iconSize: 30,
+                  icon: Icons.arrow_left_rounded,
+                  iconSize: 45,
                   route: () {
                     Navigator.pop(context);
                   },
@@ -72,12 +57,11 @@ class _LearningListScreenState extends State<LearningListScreen> {
               ),
               Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     CarouselSlider.builder(
                       options: CarouselOptions(
-                        height: 320,
-                        enlargeCenterPage: true,
+                        height: 290,
                         enableInfiniteScroll: false,
                         initialPage: 0,
                         autoPlay: false,
@@ -88,18 +72,15 @@ class _LearningListScreenState extends State<LearningListScreen> {
                           });
                         },
                       ),
-                      itemCount: modules.length,
+                      itemCount: buildings.length,
                       itemBuilder: (context, index, realIndex) {
-                        return ModuleCard(module: modules[index]);
+                        return buildings[index];
                       },
-                    ),
-                    const SizedBox(
-                      height: 16,
                     ),
                     Center(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(modules.length, (index) {
+                        children: List.generate(buildings.length, (index) {
                           return GestureDetector(
                             child: Container(
                               margin:
@@ -117,21 +98,11 @@ class _LearningListScreenState extends State<LearningListScreen> {
                         }),
                       ),
                     ),
+                    const SizedBox(
+                      height: 50,
+                    ),
                   ],
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0, right: 30),
-                    child: Image.asset(
-                      'assets/images/panda.png',
-                      width: 200,
-                      height: 200,
-                    ),
-                  ),
-                ],
               ),
             ],
           ),

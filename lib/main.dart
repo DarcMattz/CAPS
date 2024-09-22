@@ -17,6 +17,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(fontFamily: 'Poetsen One'),
       debugShowCheckedModeBanner: false,
       home: const WelcomeScreen(),
-    );
+    ); 
   }
 }
