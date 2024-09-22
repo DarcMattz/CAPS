@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/building.dart';
 import 'package:flutter_application_1/components/nice_button.dart';
+import 'package:flutter_application_1/screens/learning/science/body_start.dart';
 
 class ScienceHealthScreen extends StatefulWidget {
   const ScienceHealthScreen({super.key});
@@ -17,7 +18,7 @@ class _ScienceHealthScreenState extends State<ScienceHealthScreen> {
     const Building(
         module: "science",
         imagePath: 'assets/images/body.png',
-        route: ScienceHealthScreen()),
+        route: BodyStartScreen()),
     const Building(
         module: "science",
         imagePath: 'assets/images/quiz_lock.png',
@@ -62,8 +63,8 @@ class _ScienceHealthScreenState extends State<ScienceHealthScreen> {
                   label: "Back",
                   color: Colors.yellow,
                   shadowColor: Colors.yellow[800]!,
-                  icon: Icons.arrow_left_rounded,
-                  iconSize: 45,
+                  icon: Icons.arrow_back,
+                  iconSize: 30,
                   route: () {
                     Navigator.pop(context);
                   },
