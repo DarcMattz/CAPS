@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AbcQuizScreen extends StatelessWidget {
-  const AbcQuizScreen({super.key});
+class VowelsQuizScreen extends StatelessWidget {
+  const VowelsQuizScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Center(
+      body: Center(
         child: Text("Quiz"),
       ),
     );

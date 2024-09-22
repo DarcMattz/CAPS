@@ -48,8 +48,8 @@ class _ExploreListScreenState extends State<ExploreListScreen> {
                   label: "Back",
                   color: Colors.yellow,
                   shadowColor: Colors.yellow[800]!,
-                  icon: Icons.arrow_left_rounded,
-                  iconSize: 45,
+                  icon: Icons.arrow_back,
+                  iconSize: 30,
                   route: () {
                     Navigator.pop(context);
                   },

@@ -20,7 +20,7 @@ class _ScienceHealthScreenState extends State<ScienceHealthScreen> {
         route: ScienceHealthScreen()),
     const Building(
         module: "science",
-        imagePath: 'assets/images/quiz_lock.png',
+        imagePath: 'assets/images/quiz.png',
         route: ScienceHealthScreen()),
     const Building(
         module: "science",
@@ -62,8 +62,8 @@ class _ScienceHealthScreenState extends State<ScienceHealthScreen> {
                   label: "Back",
                   color: Colors.yellow,
                   shadowColor: Colors.yellow[800]!,
-                  icon: Icons.arrow_left_rounded,
-                  iconSize: 45,
+                  icon: Icons.arrow_back,
+                  iconSize: 30,
                   route: () {
                     Navigator.pop(context);
                   },

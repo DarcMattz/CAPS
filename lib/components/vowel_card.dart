@@ -1,28 +1,24 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/components/finish_module_dialog.dart';
-import 'package:flutter_application_1/models/shape.dart';
-import 'package:flutter_application_1/screens/learning/all_aboard/shapes_quiz.dart';
+import 'package:flutter_application_1/models/vowel.dart';
 
-class ShapeCard extends StatefulWidget {
-  final Shape shape;
-  final CarouselSliderController? carCon;
-  final int currentIndex;
-  final int totalShapes;
+class VowelCard extends StatefulWidget {
+  final Vowel vowel;
+  final void Function() nextCallback;
+  final void Function() prevCallback;
 
-  const ShapeCard({
+  const VowelCard({
     super.key,
-    required this.shape,
-    this.carCon,
-    required this.currentIndex,
-    required this.totalShapes,
+    required this.nextCallback,
+    required this.prevCallback,
+    required this.vowel,
   });
 
   @override
-  State<ShapeCard> createState() => _ShapeCardState();
+  State<VowelCard> createState() => _VowelCardState();
 }
 
-class _ShapeCardState extends State<ShapeCard> {
+class _VowelCardState extends State<VowelCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -62,12 +58,31 @@ class _ShapeCardState extends State<ShapeCard> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
+                  // const Padding(
+                  //   padding: EdgeInsets.only(top: 10.0, right: 10.0),
+                  //   child: Icon(Icons.volume_up_rounded),
+                  // ),
                   Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.asset(
-                        widget.shape.imagePath,
-                        fit: BoxFit.contain,
+                    child: Center(
+                      child: AutoSizeText(
+                        widget.vowel.vowel,
+                        style:
+                            TextStyle(fontSize: 200, color: Colors.purple[700]),
+                        maxLines: 2,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.all(Radius.circular(16)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: Image.asset(
+                            widget.vowel.imagePath,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -81,33 +96,18 @@ class _ShapeCardState extends State<ShapeCard> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  onPressed: () {
-                    if (widget.carCon != null) {
-                      widget.carCon!.previousPage();
-                    }
-                  },
+                  onPressed: widget.prevCallback,
                   icon: const Icon(Icons.arrow_back),
                 ),
                 Text(
-                  widget.shape.label,
+                  widget.vowel.imageName,
                   style: const TextStyle(
                     fontSize: 28,
                     color: Colors.orange,
                   ),
                 ),
                 IconButton(
-                  onPressed: () {
-                    if (widget.currentIndex == widget.totalShapes - 1) {
-                      showDialog(
-                        context: context,
-                        builder: (context) => const FinishModuleDialog(
-                          route: ShapesQuizScreen(),
-                        ),
-                      );
-                    } else if (widget.carCon != null) {
-                      widget.carCon!.nextPage();
-                    }
-                  },
+                  onPressed: widget.nextCallback,
                   icon: const Icon(Icons.arrow_forward),
                 ),
               ],
