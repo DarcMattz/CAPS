@@ -2,7 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/building.dart';
 import 'package:flutter_application_1/components/nice_button.dart';
+import 'package:flutter_application_1/screens/learning/science/body_quiz.dart';
 import 'package:flutter_application_1/screens/learning/science/body_start.dart';
+import 'package:flutter_application_1/screens/learning/science/care_quiz.dart';
+import 'package:flutter_application_1/screens/learning/science/care_start.dart';
+import 'package:flutter_application_1/screens/learning/science/senses_quiz.dart';
+import 'package:flutter_application_1/screens/learning/science/senses_start.dart';
 
 class ScienceHealthScreen extends StatefulWidget {
   const ScienceHealthScreen({super.key});
@@ -22,23 +27,23 @@ class _ScienceHealthScreenState extends State<ScienceHealthScreen> {
     const Building(
         module: "science",
         imagePath: 'assets/images/quiz_lock.png',
-        route: ScienceHealthScreen()),
+        route: BodyQuizScreen()),
     const Building(
         module: "science",
         imagePath: 'assets/images/senses.png',
-        route: ScienceHealthScreen()),
+        route: SensesStartScreen()),
     const Building(
         module: "science ",
         imagePath: 'assets/images/quiz.png',
-        route: ScienceHealthScreen()),
+        route: SensesQuizScreen()),
     const Building(
         module: "science",
         imagePath: 'assets/images/care.png',
-        route: ScienceHealthScreen()),
+        route: CareStartScreen()),
     const Building(
-        module: "science ",
+        module: "science",
         imagePath: 'assets/images/quiz.png',
-        route: ScienceHealthScreen()),
+        route: CareQuizScreen()),
   ];
 
   @override

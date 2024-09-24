@@ -1,45 +1,57 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/components/care_card.dart';
 import 'package:flutter_application_1/components/nice_button.dart';
-import 'package:flutter_application_1/components/shape_card.dart';
-import 'package:flutter_application_1/models/shape.dart';
+import 'package:flutter_application_1/models/care.dart';
 import 'package:gap/gap.dart';
 
-class ShapesScreen extends StatefulWidget {
-  const ShapesScreen({super.key});
+class CareScreen extends StatefulWidget {
+  const CareScreen({super.key});
 
   @override
-  State<ShapesScreen> createState() => _ShapesScreenState();
+  State<CareScreen> createState() => _CareScreenState();
 }
 
-class _ShapesScreenState extends State<ShapesScreen> {
+class _CareScreenState extends State<CareScreen> {
   int _currentIndex = 0;
   final CarouselSliderController _carCon = CarouselSliderController();
 
-  final List<Shape> shapes = [
-    Shape(
-      label: 'Circle',
-      imagePath: 'assets/images/circle.png',
+  final List<Care> cares = [
+    Care(
+      description: 'Wake up early in the morning.',
+      imagePath: 'assets/images/science/care/care_1.png',
     ),
-    Shape(
-      label: 'Square',
-      imagePath: 'assets/images/square.png',
+    Care(
+      description: 'Then, wash your face.',
+      imagePath: 'assets/images/science/care/care_2.png',
     ),
-    Shape(
-      label: 'Triangle',
-      imagePath: 'assets/images/triangle.png',
+    Care(
+      description: 'Wash your hand before you eat.',
+      imagePath: 'assets/images/science/care/care_3.png',
     ),
-    Shape(
-      label: 'Star',
-      imagePath: 'assets/images/star.png',
+    Care(
+      description: 'Eat healthy food.',
+      imagePath: 'assets/images/science/care/care_4.png',
     ),
-    Shape(
-      label: 'Rectangle',
-      imagePath: 'assets/images/rectangle.png',
+    Care(
+      description: 'Brush your teeth after you eat.',
+      imagePath: 'assets/images/science/care/care_5.png',
     ),
-    Shape(
-      label: 'Oval',
-      imagePath: 'assets/images/oval.png',
+    Care(
+      description: 'Always take a bath.',
+      imagePath: 'assets/images/science/care/care_6.png',
+    ),
+    Care(
+      description: 'Brush your hair.',
+      imagePath: 'assets/images/science/care/care_7.png',
+    ),
+    Care(
+      description: 'Clean your ears.',
+      imagePath: 'assets/images/science/care/care_8.png',
+    ),
+    Care(
+      description: 'Sleep early.',
+      imagePath: 'assets/images/science/care/care_9.png',
     ),
   ];
 
@@ -90,7 +102,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
                           });
                         },
                       ),
-                      itemCount: shapes.length,
+                      itemCount: cares.length,
                       itemBuilder: (context, index, realIndex) {
                         return GestureDetector(
                           onTap: () {
@@ -99,18 +111,18 @@ class _ShapesScreenState extends State<ShapesScreen> {
                               builder: (BuildContext context) {
                                 return AlertDialog(
                                   title: Text(
-                                    shapes[index].label,
+                                    cares[index].description,
                                     textAlign: TextAlign.center,
                                   ),
                                 );
                               },
                             );
                           },
-                          child: ShapeCard(
-                            shape: shapes[index],
+                          child: CareCard(
+                            care: cares[index],
                             carCon: _carCon,
                             currentIndex: _currentIndex,
-                            totalShapes: shapes.length,
+                            totalShapes: cares.length,
                           ),
                         );
                       },
@@ -119,7 +131,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
                     Center(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(shapes.length, (index) {
+                        children: List.generate(cares.length, (index) {
                           return GestureDetector(
                             child: Container(
                               margin:

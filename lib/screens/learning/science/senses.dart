@@ -1,45 +1,41 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/nice_button.dart';
-import 'package:flutter_application_1/components/shape_card.dart';
-import 'package:flutter_application_1/models/shape.dart';
+import 'package:flutter_application_1/components/sense_card.dart';
+import 'package:flutter_application_1/models/sense.dart';
 import 'package:gap/gap.dart';
 
-class ShapesScreen extends StatefulWidget {
-  const ShapesScreen({super.key});
+class SensesScreen extends StatefulWidget {
+  const SensesScreen({super.key});
 
   @override
-  State<ShapesScreen> createState() => _ShapesScreenState();
+  State<SensesScreen> createState() => _SensesScreenState();
 }
 
-class _ShapesScreenState extends State<ShapesScreen> {
+class _SensesScreenState extends State<SensesScreen> {
   int _currentIndex = 0;
   final CarouselSliderController _carCon = CarouselSliderController();
 
-  final List<Shape> shapes = [
-    Shape(
-      label: 'Circle',
-      imagePath: 'assets/images/circle.png',
+  final List<Sense> senses = [
+    Sense(
+      label: 'Sense of Sight',
+      imagePath: 'assets/images/science/senses/sense_1.png',
     ),
-    Shape(
-      label: 'Square',
-      imagePath: 'assets/images/square.png',
+    Sense(
+      label: 'Sense of Smell',
+      imagePath: 'assets/images/science/senses/sense_2.png',
     ),
-    Shape(
-      label: 'Triangle',
-      imagePath: 'assets/images/triangle.png',
+    Sense(
+      label: 'Sense of Taste',
+      imagePath: 'assets/images/science/senses/sense_3.png',
     ),
-    Shape(
-      label: 'Star',
-      imagePath: 'assets/images/star.png',
+    Sense(
+      label: 'Sense of Sound',
+      imagePath: 'assets/images/science/senses/sense_4.png',
     ),
-    Shape(
-      label: 'Rectangle',
-      imagePath: 'assets/images/rectangle.png',
-    ),
-    Shape(
-      label: 'Oval',
-      imagePath: 'assets/images/oval.png',
+    Sense(
+      label: 'Sense of Touch',
+      imagePath: 'assets/images/science/senses/sense_5.png',
     ),
   ];
 
@@ -90,7 +86,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
                           });
                         },
                       ),
-                      itemCount: shapes.length,
+                      itemCount: senses.length,
                       itemBuilder: (context, index, realIndex) {
                         return GestureDetector(
                           onTap: () {
@@ -99,18 +95,18 @@ class _ShapesScreenState extends State<ShapesScreen> {
                               builder: (BuildContext context) {
                                 return AlertDialog(
                                   title: Text(
-                                    shapes[index].label,
+                                    senses[index].label,
                                     textAlign: TextAlign.center,
                                   ),
                                 );
                               },
                             );
                           },
-                          child: ShapeCard(
-                            shape: shapes[index],
+                          child: SenseCard(
+                            sense: senses[index],
                             carCon: _carCon,
                             currentIndex: _currentIndex,
-                            totalShapes: shapes.length,
+                            totalShapes: senses.length,
                           ),
                         );
                       },
@@ -119,7 +115,7 @@ class _ShapesScreenState extends State<ShapesScreen> {
                     Center(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(shapes.length, (index) {
+                        children: List.generate(senses.length, (index) {
                           return GestureDetector(
                             child: Container(
                               margin:
