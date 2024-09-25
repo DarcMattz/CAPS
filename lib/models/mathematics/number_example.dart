@@ -1,8 +1,8 @@
-class Number {
+class NumberExample {
   final String numberImage;
   final String numberExample;
 
-  Number({
+  NumberExample({
     required this.numberExample,
     required this.numberImage,
   });

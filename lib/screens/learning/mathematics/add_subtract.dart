@@ -1,42 +1,30 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/components/building.dart';
-import 'package:flutter_application_1/components/nice_button.dart';
-import 'package:flutter_application_1/screens/learning/mathematics/add_subtract.dart';
-import 'package:flutter_application_1/screens/learning/mathematics/numbers_quiz.dart';
-import 'package:flutter_application_1/screens/learning/mathematics/numbers_start_lesson_one.dart';
-import 'package:flutter_application_1/screens/learning/mathematics/numbers_start_lesson_three.dart';
+import 'package:flutter_application_1/components/mathematics/add_subtract_card.dart';
+import 'package:flutter_application_1/components/mathematics/number_card.dart';
+import 'package:flutter_application_1/components/mathematics/number_with_example_card.dart';
+import 'package:flutter_application_1/models/mathematics/number_example.dart';
+import 'package:flutter_application_1/models/mathematics/number_only.dart';
+import 'package:gap/gap.dart';
+import '../../../components/nice_button.dart';
 
-class MathematicsScreen extends StatefulWidget {
-  const MathematicsScreen({super.key});
+class AddSubtractScreen extends StatefulWidget {
+  const AddSubtractScreen({super.key});
 
   @override
-  State<MathematicsScreen> createState() => _MathematicsScreenState();
+  State<AddSubtractScreen> createState() => _AddSubtractScreenState();
 }
 
-class _MathematicsScreenState extends State<MathematicsScreen> {
+class _AddSubtractScreenState extends State<AddSubtractScreen> {
   int _currentIndex = 0;
+  final CarouselSliderController _carCon = CarouselSliderController();
 
-  final List<Building> buildings = [
-    const Building(
-        module: "mathematics",
-        imagePath: 'assets/images/mathematics/numbers.png',
-        route: NumbersStartLessonOneScreen()),
-
-    const Building(
-        module: "mathematics",
-        imagePath: 'assets/images/quiz_lock.png',
-        route: NumbersQuizScreen()),
-
-    const Building(
-        module: "mathematics",
-        imagePath: 'assets/images/mathematics/add_subtract.png',
-        route: NumbersStartLessonThreeScreen()),
-
-    const Building(
-        module: "mathematics",
-        imagePath: 'assets/images/quiz_lock.png',
-        route: NumbersQuizScreen()),
+  final List<NumberOnly> _numbers = [
+    NumberOnly(numberImage: 'assets/images/mathematics/lesson_3-1.png'),
+    NumberOnly(numberImage: 'assets/images/mathematics/lesson_3-2.png'),
+    NumberOnly(numberImage: 'assets/images/mathematics/lesson_3-3.png'),
+    NumberOnly(numberImage: 'assets/images/mathematics/lesson_3-4.png'),
+    NumberOnly(numberImage: 'assets/images/mathematics/lesson_3-5.png'),
   ];
 
   @override
@@ -45,9 +33,8 @@ class _MathematicsScreenState extends State<MathematicsScreen> {
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: Colors.lightBlueAccent,
           image: DecorationImage(
-            image: AssetImage('assets/images/background_road.png'),
+            image: AssetImage('assets/images/background.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -61,8 +48,8 @@ class _MathematicsScreenState extends State<MathematicsScreen> {
                   label: "Back",
                   color: Colors.yellow,
                   shadowColor: Colors.yellow[800]!,
-                  icon: Icons.arrow_left_rounded,
-                  iconSize: 45,
+                  icon: Icons.close,
+                  iconSize: 30,
                   route: () {
                     Navigator.pop(context);
                   },
@@ -73,31 +60,39 @@ class _MathematicsScreenState extends State<MathematicsScreen> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     CarouselSlider.builder(
+                      carouselController: _carCon,
                       options: CarouselOptions(
-                        height: 290,
+                        height: 400,
+                        enlargeCenterPage: true,
                         enableInfiniteScroll: false,
                         initialPage: 0,
                         autoPlay: false,
-                        viewportFraction: 0.7,
+                        viewportFraction: 0.8,
                         onPageChanged: (index, reason) {
                           setState(() {
                             _currentIndex = index;
                           });
                         },
                       ),
-                      itemCount: buildings.length,
+                      itemCount: _numbers.length,
                       itemBuilder: (context, index, realIndex) {
-                        return buildings[index];
+                        return NumbersLessonThreeCard(
+                          number: _numbers[index],
+                          currentIndex: index,
+                          totalNumbers: _numbers.length,
+                          carCon: _carCon,
+                        );
                       },
                     ),
+                    const Gap(30),
                     Center(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(buildings.length, (index) {
+                        children: List.generate(_numbers.length, (index) {
                           return GestureDetector(
                             child: Container(
                               margin:
-                                  const EdgeInsets.symmetric(horizontal: 4.0),
+                              const EdgeInsets.symmetric(horizontal: 4.0),
                               width: 10,
                               height: 10,
                               decoration: BoxDecoration(
@@ -111,11 +106,21 @@ class _MathematicsScreenState extends State<MathematicsScreen> {
                         }),
                       ),
                     ),
-                    const SizedBox(
-                      height: 50,
-                    ),
                   ],
                 ),
+              ),
+              const Gap(20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 60.0),
+                    child: Image.asset(
+                      'assets/images/dog.png',
+                      height: 170,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

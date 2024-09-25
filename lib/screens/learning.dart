@@ -33,7 +33,7 @@ class _LearningListScreenState extends State<LearningListScreen> {
         route: const ScienceHealthScreen()),
     Module(
         type: "learning",
-        imagePath: 'assets/images/mathematics.png',
+        imagePath: 'assets/images/mathematics/mathematics.png',
         route: const MathematicsScreen()),
     Module(
         type: "learning",
