@@ -1,17 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/mathematics/number.dart';
-
-import '../../screens/learning/all_aboard/shapes_quiz.dart';
+import 'package:flutter_application_1/models/mathematics/number_example.dart';
+import 'package:flutter_application_1/screens/learning/mathematics/numbers_quiz.dart';
 import '../finish_module_dialog.dart';
+import '../utils/circle_button.dart';
 
-class NumbersCard extends StatefulWidget {
-  final Number number;
+class NumberWithExampleCard extends StatefulWidget {
+  final NumberExample number;
   final CarouselSliderController? carCon;
   final int currentIndex;
   final int totalNumbers;
 
-  const NumbersCard({
+  const NumberWithExampleCard({
     super.key,
     required this.number,
     this.carCon,
@@ -20,10 +20,10 @@ class NumbersCard extends StatefulWidget {
   });
 
   @override
-  State<NumbersCard> createState() => _NumbersCardState();
+  State<NumberWithExampleCard> createState() => _NumberWithExampleCardState();
 }
 
-class _NumbersCardState extends State<NumbersCard> {
+class _NumberWithExampleCardState extends State<NumberWithExampleCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -71,10 +71,13 @@ class _NumbersCardState extends State<NumbersCard> {
                       ),
 
                     Positioned(
-                      right: 0,
-                      child: IconButton(
-                          onPressed: () => {},
-                          icon: const Icon(Icons.volume_down_rounded, size: 30.0,)
+                      right: 5.0,
+                      top: 5.0,
+                      child: CircleButton(
+                          color: Colors.purpleAccent,
+                          shadowColor: Colors.purple,
+                          icon: Icons.volume_up_rounded,
+                          method: () {}
                       ),
                     ),
                   ]
@@ -113,32 +116,39 @@ class _NumbersCardState extends State<NumbersCard> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-
-                IconButton(
-                  onPressed: () {
+              if(widget.currentIndex > 0)
+                CircleButton(
+                  color: Colors.amberAccent,
+                  shadowColor: Colors.amber,
+                  icon: Icons.arrow_back_rounded,
+                  method: () {
                     if(widget.currentIndex > 0) {
                       widget.carCon!.previousPage();
                     }
                   },
-                  icon: const Icon(Icons.arrow_back),
                 ),
+                const SizedBox(height: 10.0, width: 10.0,),
 
-                IconButton(
-                  onPressed: () {
-                    if (widget.currentIndex == widget.totalNumbers - 1) {
-                      showDialog(
-                        context: context,
-                        builder: (context) => const FinishModuleDialog(
-                          route: ShapesQuizScreen(),
-                        ),
-                      );
-                    } else if (widget.carCon != null) {
-                      widget.carCon!.nextPage();
-                    }
-                  },
-                  icon: const Icon(Icons.arrow_forward),
-                ),
-              ],
+
+
+              CircleButton(
+                color: Colors.amberAccent,
+                shadowColor: Colors.amber,
+                icon: Icons.arrow_forward_rounded,
+                method: () {
+                  if (widget.currentIndex == widget.totalNumbers - 1) {
+                    showDialog(
+                      context: context,
+                      builder: (context) => const FinishModuleDialog(
+                        route: NumbersQuizScreen(),
+                      ),
+                    );
+                  } else {
+                    widget.carCon!.nextPage();
+                  }
+                },
+              ),
+            ],
           ),
         ],
       ),

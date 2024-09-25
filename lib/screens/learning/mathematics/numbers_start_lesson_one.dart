@@ -3,8 +3,8 @@ import 'package:flutter_application_1/screens/learning/mathematics/numbers.dart'
 import '../../../components/start_card.dart';
 import '../../../components/top_bar.dart';
 
-class NumbersStartScreen extends StatelessWidget {
-  const NumbersStartScreen({super.key});
+class NumbersStartLessonOneScreen extends StatelessWidget {
+  const NumbersStartLessonOneScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

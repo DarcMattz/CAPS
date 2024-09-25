@@ -2,7 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/building.dart';
 import 'package:flutter_application_1/components/nice_button.dart';
-import 'package:flutter_application_1/screens/learning/mathematics/numbers_start.dart';
+import 'package:flutter_application_1/screens/learning/mathematics/add_subtract.dart';
+import 'package:flutter_application_1/screens/learning/mathematics/numbers_quiz.dart';
+import 'package:flutter_application_1/screens/learning/mathematics/numbers_start_lesson_one.dart';
+import 'package:flutter_application_1/screens/learning/mathematics/numbers_start_lesson_three.dart';
 
 class MathematicsScreen extends StatefulWidget {
   const MathematicsScreen({super.key});
@@ -17,12 +20,23 @@ class _MathematicsScreenState extends State<MathematicsScreen> {
   final List<Building> buildings = [
     const Building(
         module: "mathematics",
-        imagePath: 'assets/images/numbers.png',
-        route: NumbersStartScreen()),
+        imagePath: 'assets/images/mathematics/numbers.png',
+        route: NumbersStartLessonOneScreen()),
+
     const Building(
         module: "mathematics",
         imagePath: 'assets/images/quiz_lock.png',
-        route: MathematicsScreen()),
+        route: NumbersQuizScreen()),
+
+    const Building(
+        module: "mathematics",
+        imagePath: 'assets/images/mathematics/add_subtract.png',
+        route: NumbersStartLessonThreeScreen()),
+
+    const Building(
+        module: "mathematics",
+        imagePath: 'assets/images/quiz_lock.png',
+        route: NumbersQuizScreen()),
   ];
 
   @override
