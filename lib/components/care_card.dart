@@ -101,10 +101,10 @@ class _CareCardState extends State<CareCard> {
                   },
                   icon: const Icon(Icons.arrow_back),
                 ),
-                Text(
+                const Text(
                   // widget.care.description,
                   "",
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 28,
                     color: Colors.orange,
                   ),
