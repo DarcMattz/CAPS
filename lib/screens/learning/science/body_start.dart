@@ -3,6 +3,7 @@ import 'package:flutter_application_1/components/start_card.dart';
 import 'package:flutter_application_1/components/top_bar.dart';
 import 'package:flutter_application_1/screens/learning/science/body.dart';
 
+
 class BodyStartScreen extends StatelessWidget {
   const BodyStartScreen({super.key});
 

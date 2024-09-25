@@ -75,7 +75,7 @@ class _NiceButtonState extends State<NiceButton> {
                     decoration: BoxDecoration(
                       color: widget.shadowColor,
                       borderRadius: const BorderRadius.all(
-                        Radius.circular(16),
+                        Radius.circular(13),
                       ),
                     ),
                   ),
@@ -88,7 +88,7 @@ class _NiceButtonState extends State<NiceButton> {
                     decoration: BoxDecoration(
                       color: widget.color,
                       borderRadius: const BorderRadius.all(
-                        Radius.circular(16),
+                        Radius.circular(13),
                       ),
                     ),
                     child: Row(

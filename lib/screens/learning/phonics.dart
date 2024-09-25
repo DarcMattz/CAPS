@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/building.dart';
 import 'package:flutter_application_1/components/nice_button.dart';
+import 'package:flutter_application_1/screens/learning/phonics/vowels_quiz.dart';
+import 'package:flutter_application_1/screens/learning/phonics/vowels_start.dart';
 
 class PhonicsScreen extends StatefulWidget {
   const PhonicsScreen({super.key});
@@ -17,11 +19,11 @@ class _PhonicsScreenState extends State<PhonicsScreen> {
     const Building(
         module: "phonics",
         imagePath: 'assets/images/vowels.png',
-        route: PhonicsScreen()),
+        route: VowelsStartScreen()),
     const Building(
         module: "phonics",
         imagePath: 'assets/images/quiz_lock.png',
-        route: PhonicsScreen()),
+        route: VowelsQuizScreen()),
   ];
 
   @override
@@ -46,8 +48,8 @@ class _PhonicsScreenState extends State<PhonicsScreen> {
                   label: "Back",
                   color: Colors.yellow,
                   shadowColor: Colors.yellow[800]!,
-                  icon: Icons.arrow_left_rounded,
-                  iconSize: 45,
+                  icon: Icons.arrow_back,
+                  iconSize: 30,
                   route: () {
                     Navigator.pop(context);
                   },

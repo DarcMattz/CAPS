@@ -62,19 +62,12 @@ class _ShapeCardState extends State<ShapeCard> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(top: 10.0, right: 10.0),
-                    child: Icon(Icons.volume_up_rounded),
-                  ),
                   Expanded(
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(16)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          widget.shape.imagePath,
-                          fit: BoxFit.contain,
-                        ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        widget.shape.imagePath,
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ),

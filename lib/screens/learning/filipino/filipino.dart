@@ -2,26 +2,28 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/building.dart';
 import 'package:flutter_application_1/components/nice_button.dart';
+import 'package:flutter_application_1/screens/learning/filipino/abakada_quiz.dart';
+import 'package:flutter_application_1/screens/learning/filipino/abakada_start.dart';
 
-class MathematicsScreen extends StatefulWidget {
-  const MathematicsScreen({super.key});
+class FilipinoScreen extends StatefulWidget {
+  const FilipinoScreen({super.key});
 
   @override
-  State<MathematicsScreen> createState() => _MathematicsScreenState();
+  State<FilipinoScreen> createState() => _FilipinoScreenState();
 }
 
-class _MathematicsScreenState extends State<MathematicsScreen> {
+class _FilipinoScreenState extends State<FilipinoScreen> {
   int _currentIndex = 0;
 
   final List<Building> buildings = [
     const Building(
-        module: "mathematics",
-        imagePath: 'assets/images/numbers.png',
-        route: MathematicsScreen()),
+        module: "filipino",
+        imagePath: 'assets/images/filipino/abakada.png',
+        route: AbakadaStartScreen()),
     const Building(
-        module: "mathematics",
-        imagePath: 'assets/images/quiz_lock.png',
-        route: MathematicsScreen()),
+        module: "filipino ",
+        imagePath: 'assets/images/quiz.png',
+        route: AbakadaQuizScreen()),
   ];
 
   @override

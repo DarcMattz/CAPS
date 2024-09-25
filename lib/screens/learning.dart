@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/nice_button.dart';
 import 'package:flutter_application_1/components/modules.dart';
 import 'package:flutter_application_1/screens/learning/all_aboard.dart';
-import 'package:flutter_application_1/screens/learning/mathematics.dart';
+import 'package:flutter_application_1/screens/learning/filipino/filipino.dart';
+import 'package:flutter_application_1/screens/learning/mathematics/mathematics.dart';
 import 'package:flutter_application_1/screens/learning/phonics.dart';
 import 'package:flutter_application_1/screens/learning/science.dart';
 
@@ -34,6 +35,10 @@ class _LearningListScreenState extends State<LearningListScreen> {
         type: "learning",
         imagePath: 'assets/images/mathematics.png',
         route: const MathematicsScreen()),
+    Module(
+        type: "learning",
+        imagePath: 'assets/images/filipino/filipino.png',
+        route: const FilipinoScreen()),
   ];
 
   @override
@@ -58,8 +63,8 @@ class _LearningListScreenState extends State<LearningListScreen> {
                   label: "Back",
                   color: Colors.yellow,
                   shadowColor: Colors.yellow[800]!,
-                  icon: Icons.arrow_left_rounded,
-                  iconSize: 45,
+                  icon: Icons.arrow_back,
+                  iconSize: 30,
                   route: () {
                     Navigator.pop(context);
                   },

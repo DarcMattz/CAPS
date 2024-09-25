@@ -39,7 +39,7 @@ class StartCard extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 color: Colors.blue[100],
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(6),
                 boxShadow: const [
                   BoxShadow(
                     color: Colors.black12,
@@ -48,17 +48,17 @@ class StartCard extends StatelessWidget {
                   ),
                 ],
               ),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(16)),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
                 child: Image.asset(
-                  imagePath,
-                  fit: BoxFit.contain,
-                ),
+                    imagePath,
+                    fit: BoxFit.contain,
+                  ),
               ),
-            ),
+              ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.fromLTRB(6, 20, 6, 6),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
