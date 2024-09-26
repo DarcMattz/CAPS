@@ -241,6 +241,7 @@ class _VowelsScreenState extends State<VowelsScreen> {
                                   rowCurIndex == 4) {
                                 showDialog(
                                   context: context,
+                                  barrierDismissible: false,
                                   builder: (context) =>
                                       const FinishModuleDialog(
                                     route: AbcQuizScreen(),

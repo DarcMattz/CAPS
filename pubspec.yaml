@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  audioplayers: ^6.1.0
   auto_size_text: ^3.0.0
   camera: ^0.11.0+2
   carousel_slider: ^5.0.0
@@ -60,6 +61,11 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/sounds/alphabet/letters/
+    - assets/sounds/alphabet/example/
+    - assets/sounds/alphabet/
+    - assets/sounds/shapes/
+    - assets/sounds/
     - assets/images/
     - assets/images/science/care/
     - assets/images/science/face/

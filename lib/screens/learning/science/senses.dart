@@ -92,6 +92,7 @@ class _SensesScreenState extends State<SensesScreen> {
                           onTap: () {
                             showDialog(
                               context: context,
+                              barrierDismissible: false,
                               builder: (BuildContext context) {
                                 return AlertDialog(
                                   title: Text(

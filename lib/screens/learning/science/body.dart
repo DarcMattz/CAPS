@@ -173,6 +173,7 @@ class _BodyScreenState extends State<BodyScreen> {
                                   rowCurIndex == body[index].length - 1) {
                                 showDialog(
                                   context: context,
+                                  barrierDismissible: false,
                                   builder: (context) =>
                                       const FinishModuleDialog(
                                     route: BodyQuizScreen(),

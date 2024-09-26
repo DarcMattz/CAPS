@@ -1,10 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/audioplayer/audio_service.dart';
 import 'package:flutter_application_1/components/start_card.dart';
 import 'package:flutter_application_1/components/top_bar.dart';
 import 'package:flutter_application_1/screens/learning/all_aboard/abc.dart';
 
-class AbcStartScreen extends StatelessWidget {
+class AbcStartScreen extends StatefulWidget {
   const AbcStartScreen({super.key});
+
+  @override
+  State<AbcStartScreen> createState() => _AbcStartScreenState();
+}
+
+class _AbcStartScreenState extends State<AbcStartScreen> {
+  final AudioService _audioService = AudioService();
+
+  @override
+  void initState() {
+    super.initState();
+    _play();
+  }
+
+  @override
+  void dispose() {
+    _audioService.dispose();
+    super.dispose();
+  }
+
+  void _play() {
+    _audioService.playFromAssets("sounds/alphabet/learn_alphabet.m4a");
+  }
 
   @override
   Widget build(BuildContext context) {
