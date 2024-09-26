@@ -68,7 +68,7 @@ class _VowelCardState extends State<VowelCard> {
                         widget.vowel.vowel,
                         style:
                             TextStyle(fontSize: 200, color: Colors.purple[700]),
-                        maxLines: 2,
+                        maxLines: 1,
                       ),
                     ),
                   ),
