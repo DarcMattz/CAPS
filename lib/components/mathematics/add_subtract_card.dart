@@ -40,7 +40,6 @@ class _NumbersLessonThreeCardState extends State<NumbersLessonThreeCard> {
           ),
         ],
       ),
-
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -61,31 +60,33 @@ class _NumbersLessonThreeCardState extends State<NumbersLessonThreeCard> {
                 ],
               ),
               child: Image.asset(
-                        widget.number.numberImage,
-                        fit: BoxFit.contain,
-                        width: double.infinity,
-                      ),
+                widget.number.numberImage,
+                fit: BoxFit.contain,
+                width: double.infinity,
+              ),
             ),
           ),
-
-          const SizedBox(height: 10,),
-
+          const SizedBox(
+            height: 10,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if(widget.currentIndex > 0)
-              CircleButton(
+              if (widget.currentIndex > 0)
+                CircleButton(
                   color: Colors.amberAccent,
                   shadowColor: Colors.yellow,
                   icon: Icons.arrow_back_rounded,
                   method: () {
-                    if(widget.currentIndex > 0) {
+                    if (widget.currentIndex > 0) {
                       widget.carCon!.previousPage();
                     }
                   },
+                ),
+              const SizedBox(
+                height: 10.0,
+                width: 10.0,
               ),
-              const SizedBox(height: 10.0, width: 10.0,),
-
               CircleButton(
                 color: Colors.amberAccent,
                 shadowColor: Colors.yellow,
@@ -94,6 +95,7 @@ class _NumbersLessonThreeCardState extends State<NumbersLessonThreeCard> {
                   if (widget.currentIndex == widget.totalNumbers - 1) {
                     showDialog(
                       context: context,
+                      barrierDismissible: false,
                       builder: (context) => const FinishModuleDialog(
                         route: NumbersQuizScreen(),
                       ),

@@ -97,6 +97,7 @@ class _NumberCardState extends State<NumberCard> {
                   shadowColor: Colors.amber,
                   icon: Icons.arrow_back_rounded,
                 ),
+               const SizedBox(height: 10.0, width: 10.0,),
               const CircleButton(
                 color: Colors.amberAccent,
                 shadowColor: Colors.amber,

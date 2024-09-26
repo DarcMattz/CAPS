@@ -39,26 +39,32 @@ class _AbakadaScreenState extends State<AbakadaScreen> {
     Shape(
       label: 'Circle',
       imagePath: 'assets/images/circle.png',
+      soundPath: '',
     ),
     Shape(
       label: 'Square',
       imagePath: 'assets/images/square.png',
+      soundPath: '',
     ),
     Shape(
       label: 'Triangle',
       imagePath: 'assets/images/triangle.png',
+      soundPath: '',
     ),
     Shape(
       label: 'Star',
       imagePath: 'assets/images/star.png',
+      soundPath: '',
     ),
     Shape(
       label: 'Rectangle',
       imagePath: 'assets/images/rectangle.png',
+      soundPath: '',
     ),
     Shape(
       label: 'Oval',
       imagePath: 'assets/images/oval.png',
+      soundPath: '',
     ),
   ];
 
@@ -251,6 +257,7 @@ class _AbakadaScreenState extends State<AbakadaScreen> {
                                   _carCon.nextPage();
                                   if (_currentIndex == abakadaList.length - 1) {
                                     showDialog(
+                                      barrierDismissible: false,
                                       context: context,
                                       builder: (context) =>
                                           const FinishModuleDialog(

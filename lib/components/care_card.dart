@@ -114,6 +114,7 @@ class _CareCardState extends State<CareCard> {
                     if (widget.currentIndex == widget.totalShapes - 1) {
                       showDialog(
                         context: context,
+                        barrierDismissible: false,
                         builder: (context) => const FinishModuleDialog(
                           route: ShapesQuizScreen(),
                         ),
