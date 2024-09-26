@@ -2,8 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/building.dart';
 import 'package:flutter_application_1/components/nice_button.dart';
-import 'package:flutter_application_1/screens/learning/filipino/abakada_quiz.dart';
-import 'package:flutter_application_1/screens/learning/filipino/abakada_start.dart';
+import 'package:flutter_application_1/screens/learning/filipino/filipino_start_quiz.dart';
+import 'package:flutter_application_1/screens/learning/filipino/filipino_start_lesson.dart';
 
 class FilipinoScreen extends StatefulWidget {
   const FilipinoScreen({super.key});
@@ -19,11 +19,11 @@ class _FilipinoScreenState extends State<FilipinoScreen> {
     const Building(
         module: "filipino",
         imagePath: 'assets/images/filipino/abakada.png',
-        route: AbakadaStartScreen()),
+        route: FilipinoStartLessonScreen()),
     const Building(
         module: "filipino ",
         imagePath: 'assets/images/quiz.png',
-        route: AbakadaQuizScreen()),
+        route: FilipinoStartQuizScreen()),
   ];
 
   @override
@@ -48,8 +48,8 @@ class _FilipinoScreenState extends State<FilipinoScreen> {
                   label: "Back",
                   color: Colors.yellow,
                   shadowColor: Colors.yellow[800]!,
-                  icon: Icons.arrow_left_rounded,
-                  iconSize: 45,
+                  icon: Icons.arrow_back,
+                  iconSize: 30,
                   route: () {
                     Navigator.pop(context);
                   },
