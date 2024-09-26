@@ -6,8 +6,9 @@ import 'package:flutter_application_1/components/lesson_card.dart';
 // import 'package:flutter_application_1/components/nice_button.dart';
 // import 'package:flutter_application_1/components/shape_card.dart';
 import 'package:flutter_application_1/components/top_bar.dart';
+import 'package:flutter_application_1/components/utils/circle_button.dart';
 import 'package:flutter_application_1/models/shape.dart';
-import 'package:flutter_application_1/screens/learning/filipino/abakada_quiz.dart';
+import 'package:flutter_application_1/screens/learning/filipino/filipino_start_quiz.dart';
 import 'package:gap/gap.dart';
 
 class Abakada {
@@ -33,159 +34,134 @@ class AbakadaScreen extends StatefulWidget {
 }
 
 class _AbakadaScreenState extends State<AbakadaScreen> {
-  final CarouselSliderController _carCon = CarouselSliderController();
+  final CarouselSliderController parentCarCon = CarouselSliderController();
 
-  final List<Shape> shapes = [
-    Shape(
-      label: 'Circle',
-      imagePath: 'assets/images/circle.png',
-      soundPath: '',
-    ),
-    Shape(
-      label: 'Square',
-      imagePath: 'assets/images/square.png',
-      soundPath: '',
-    ),
-    Shape(
-      label: 'Triangle',
-      imagePath: 'assets/images/triangle.png',
-      soundPath: '',
-    ),
-    Shape(
-      label: 'Star',
-      imagePath: 'assets/images/star.png',
-      soundPath: '',
-    ),
-    Shape(
-      label: 'Rectangle',
-      imagePath: 'assets/images/rectangle.png',
-      soundPath: '',
-    ),
-    Shape(
-      label: 'Oval',
-      imagePath: 'assets/images/oval.png',
-      soundPath: '',
-    ),
-  ];
-
-  final List<Abakada> abakadaList = [
-    Abakada(imagePath: "", label: "", mainContent: "Aa", voicePath: ""),
-    Abakada(
-        imagePath: "assets/images/filipino/abakada_Aa.png",
-        label: "A-so",
-        mainContent: "",
-        voicePath: "",
-        subContent: ["a", "e", "i", "o", "u"]),
-    Abakada(imagePath: "", label: "", mainContent: "Ba", voicePath: ""),
-    Abakada(
-        imagePath: "assets/images/filipino/abakada_Ba.png",
-        label: "Ba-ka",
-        mainContent: "",
-        voicePath: "",
-        subContent: ["Ba", "Be", "Bi", "Bo", "Bu"]),
-    Abakada(imagePath: "", label: "", mainContent: "Ka", voicePath: ""),
-    Abakada(
-        imagePath: "assets/images/filipino/abakada_Ka.png",
-        label: "Ka-bayo",
-        mainContent: "",
-        voicePath: "",
-        subContent: ["Ka", "Ke", "Ki", "Ko", "Ku"]),
-    Abakada(imagePath: "", label: "", mainContent: "Da", voicePath: ""),
-    Abakada(
-        imagePath: "assets/images/filipino/abakada_Da.png",
-        label: "Da-ga",
-        mainContent: "",
-        voicePath: "",
-        subContent: ["Da", "De", "Di", "Do", "Du"]),
-    Abakada(imagePath: "", label: "", mainContent: "Ga", voicePath: ""),
-    Abakada(
-        imagePath: "assets/images/filipino/abakada_Ga.png",
-        label: "Ga-gamba",
-        mainContent: "",
-        voicePath: "",
-        subContent: ["Ga", "Ge", "Gi", "Go", "Gu"]),
-    Abakada(imagePath: "", label: "", mainContent: "Ha", voicePath: ""),
-    Abakada(
-        imagePath: "assets/images/filipino/abakada_Ha.png",
-        label: "Ha-laman",
-        mainContent: "",
-        voicePath: "",
-        subContent: ["Ha", "He", "Hi", "Ho", "Hu"]),
-    Abakada(imagePath: "", label: "", mainContent: "La", voicePath: ""),
-    Abakada(
-        imagePath: "assets/images/filipino/abakada_La.png",
-        label: "La-pis",
-        mainContent: "",
-        voicePath: "",
-        subContent: ["La", "Le", "Li", "Lo", "Lu"]),
-    Abakada(imagePath: "", label: "", mainContent: "Ma", voicePath: ""),
-    Abakada(
-        imagePath: "assets/images/filipino/abakada_Ma.png",
-        label: "Ma-ta",
-        mainContent: "",
-        voicePath: "",
-        subContent: ["Ma", "Me", "Mi", "Mo", "Mu"]),
-    Abakada(imagePath: "", label: "", mainContent: "Na", voicePath: ""),
-    Abakada(
-        imagePath: "assets/images/filipino/abakada_Na.png",
-        label: "Na-nay",
-        mainContent: "",
-        voicePath: "",
-        subContent: ["Na", "Ne", "Ni", "No", "Nu"]),
-    Abakada(imagePath: "", label: "", mainContent: "Nga", voicePath: ""),
-    Abakada(
-        imagePath: "assets/images/filipino/abakada_Nga.png",
-        label: "Ngi-pin",
-        mainContent: "",
-        voicePath: "",
-        subContent: ["Nga", "Nge", "Ngi", "Ngo", "Ngu"]),
-    Abakada(imagePath: "", label: "", mainContent: "Pa", voicePath: ""),
-    Abakada(
-        imagePath: "assets/images/filipino/abakada_Pa.png",
-        label: "Pa-paya",
-        mainContent: "",
-        voicePath: "",
-        subContent: ["Pa", "Pe", "Pi", "Po", "Pu"]),
-    Abakada(imagePath: "", label: "", mainContent: "Ra", voicePath: ""),
-    Abakada(
-        imagePath: "assets/images/filipino/abakada_Ra.png",
-        label: "Ra-dyo",
-        mainContent: "",
-        voicePath: "",
-        subContent: ["Ra", "Re", "Ri", "Ro", "Ru"]),
-    Abakada(imagePath: "", label: "", mainContent: "Sa", voicePath: ""),
-    Abakada(
-        imagePath: "assets/images/filipino/abakada_Sa.png",
-        label: "Sa-ging",
-        mainContent: "",
-        voicePath: "",
-        subContent: ["Sa", "Se", "Si", "So", "Su"]),
-    Abakada(imagePath: "", label: "", mainContent: "Ta", voicePath: ""),
-    Abakada(
-        imagePath: "assets/images/filipino/abakada_Ta.png",
-        label: "Ta-sa",
-        mainContent: "",
-        voicePath: "",
-        subContent: ["Ta", "Te", "Ti", "To", "Tu"]),
-    Abakada(imagePath: "", label: "", mainContent: "Wa", voicePath: ""),
-    Abakada(
-        imagePath: "assets/images/filipino/abakada_Wa.png",
-        label: "Wa-lis",
-        mainContent: "",
-        voicePath: "",
-        subContent: ["Wa", "We", "Wi", "Wo", "Wu"]),
-    Abakada(imagePath: "", label: "", mainContent: "Ya", voicePath: ""),
-    Abakada(
-        imagePath: "assets/images/filipino/abakada_Yo.png",
-        label: "Yo-yo",
-        mainContent: "",
-        voicePath: "",
-        subContent: ["Ya", "Ye", "Yi", "Yo", "Yu"]),
+  final List<List<Abakada>> abakadaList = [
+    [
+      Abakada(imagePath: "", label: "", mainContent: "Aa", voicePath: ""),
+      Abakada(
+          imagePath: "assets/images/filipino/abakada_Aa.png",
+          label: "A-so",
+          mainContent: "",
+          voicePath: "",
+          subContent: ["a", "e", "i", "o", "u"]),
+      Abakada(imagePath: "", label: "", mainContent: "Ba", voicePath: ""),
+      Abakada(
+          imagePath: "assets/images/filipino/abakada_Ba.png",
+          label: "Ba-ka",
+          mainContent: "",
+          voicePath: "",
+          subContent: ["Ba", "Be", "Bi", "Bo", "Bu"]),
+      Abakada(imagePath: "", label: "", mainContent: "Ka", voicePath: ""),
+      Abakada(
+          imagePath: "assets/images/filipino/abakada_Ka.png",
+          label: "Ka-bayo",
+          mainContent: "",
+          voicePath: "",
+          subContent: ["Ka", "Ke", "Ki", "Ko", "Ku"]),
+      Abakada(imagePath: "", label: "", mainContent: "Da", voicePath: ""),
+      Abakada(
+          imagePath: "assets/images/filipino/abakada_Da.png",
+          label: "Da-ga",
+          mainContent: "",
+          voicePath: "",
+          subContent: ["Da", "De", "Di", "Do", "Du"]),
+    ],
+    [
+      Abakada(imagePath: "", label: "", mainContent: "Ga", voicePath: ""),
+      Abakada(
+          imagePath: "assets/images/filipino/abakada_Ga.png",
+          label: "Ga-gamba",
+          mainContent: "",
+          voicePath: "",
+          subContent: ["Ga", "Ge", "Gi", "Go", "Gu"]),
+      Abakada(imagePath: "", label: "", mainContent: "Ha", voicePath: ""),
+      Abakada(
+          imagePath: "assets/images/filipino/abakada_Ha.png",
+          label: "Ha-laman",
+          mainContent: "",
+          voicePath: "",
+          subContent: ["Ha", "He", "Hi", "Ho", "Hu"]),
+      Abakada(imagePath: "", label: "", mainContent: "La", voicePath: ""),
+      Abakada(
+          imagePath: "assets/images/filipino/abakada_La.png",
+          label: "La-pis",
+          mainContent: "",
+          voicePath: "",
+          subContent: ["La", "Le", "Li", "Lo", "Lu"]),
+      Abakada(imagePath: "", label: "", mainContent: "Ma", voicePath: ""),
+      Abakada(
+          imagePath: "assets/images/filipino/abakada_Ma.png",
+          label: "Ma-ta",
+          mainContent: "",
+          voicePath: "",
+          subContent: ["Ma", "Me", "Mi", "Mo", "Mu"]),
+    ],
+    [
+      Abakada(imagePath: "", label: "", mainContent: "Na", voicePath: ""),
+      Abakada(
+          imagePath: "assets/images/filipino/abakada_Na.png",
+          label: "Na-nay",
+          mainContent: "",
+          voicePath: "",
+          subContent: ["Na", "Ne", "Ni", "No", "Nu"]),
+      Abakada(imagePath: "", label: "", mainContent: "Nga", voicePath: ""),
+      Abakada(
+          imagePath: "assets/images/filipino/abakada_Nga.png",
+          label: "Ngi-pin",
+          mainContent: "",
+          voicePath: "",
+          subContent: ["Nga", "Nge", "Ngi", "Ngo", "Ngu"]),
+      Abakada(imagePath: "", label: "", mainContent: "Pa", voicePath: ""),
+      Abakada(
+          imagePath: "assets/images/filipino/abakada_Pa.png",
+          label: "Pa-paya",
+          mainContent: "",
+          voicePath: "",
+          subContent: ["Pa", "Pe", "Pi", "Po", "Pu"]),
+      Abakada(imagePath: "", label: "", mainContent: "Ra", voicePath: ""),
+      Abakada(
+          imagePath: "assets/images/filipino/abakada_Ra.png",
+          label: "Ra-dyo",
+          mainContent: "",
+          voicePath: "",
+          subContent: ["Ra", "Re", "Ri", "Ro", "Ru"]),
+    ],
+    [
+      Abakada(imagePath: "", label: "", mainContent: "Sa", voicePath: ""),
+      Abakada(
+          imagePath: "assets/images/filipino/abakada_Sa.png",
+          label: "Sa-ging",
+          mainContent: "",
+          voicePath: "",
+          subContent: ["Sa", "Se", "Si", "So", "Su"]),
+      Abakada(imagePath: "", label: "", mainContent: "Ta", voicePath: ""),
+      Abakada(
+          imagePath: "assets/images/filipino/abakada_Ta.png",
+          label: "Ta-sa",
+          mainContent: "",
+          voicePath: "",
+          subContent: ["Ta", "Te", "Ti", "To", "Tu"]),
+      Abakada(imagePath: "", label: "", mainContent: "Wa", voicePath: ""),
+      Abakada(
+          imagePath: "assets/images/filipino/abakada_Wa.png",
+          label: "Wa-lis",
+          mainContent: "",
+          voicePath: "",
+          subContent: ["Wa", "We", "Wi", "Wo", "Wu"]),
+      Abakada(imagePath: "", label: "", mainContent: "Ya", voicePath: ""),
+      Abakada(
+          imagePath: "assets/images/filipino/abakada_Yo.png",
+          label: "Yo-yo",
+          mainContent: "",
+          voicePath: "",
+          subContent: ["Ya", "Ye", "Yi", "Yo", "Yu"]),
+    ]
   ];
 
   @override
   Widget build(BuildContext context) {
-    int _currentIndex = 0;
+    int currentIndex = 0;
 
     return Scaffold(
       body: Container(
@@ -200,102 +176,77 @@ class _AbakadaScreenState extends State<AbakadaScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Padding(
-              //   padding: const EdgeInsets.all(16.0),
-              //   child: NiceButton(
-              //     label: "Back",
-              //     color: Colors.yellow,
-              //     shadowColor: Colors.yellow[800]!,
-              //     icon: Icons.close,
-              //     iconSize: 30,
-              //     route: () {
-              //       Navigator.pop(context);
-              //     },
-              //   ),
-              // ),
               const TopBar(),
               Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    CarouselSlider.builder(
-                      carouselController: _carCon,
-                      options: CarouselOptions(
-                        height: 400,
-                        enlargeCenterPage: true,
-                        enableInfiniteScroll: false,
-                        initialPage: 0,
-                        autoPlay: false,
-                        viewportFraction: 0.8,
-                        onPageChanged: (index, reason) {
-                          // setState(() {
-                          //   _currentIndex = index;
-                          // });
-                          _currentIndex = index;
+                child: CarouselSlider.builder(
+                  carouselController: parentCarCon,
+                  itemCount: abakadaList.length,
+                  options: CarouselOptions(
+                    scrollDirection: Axis.vertical,
+                    height: 500,
+                    enlargeCenterPage: true,
+                    enableInfiniteScroll: false,
+                    initialPage: 0,
+                    autoPlay: false,
+                    viewportFraction: 0.8,
+                  ),
+                  itemBuilder: (context, index, realIndex) {
+                    final CarouselSliderController childCarCon =
+                        CarouselSliderController();
+                    return GestureDetector(
+                      onTap: () {},
+                      child: CarouselSlider.builder(
+                        carouselController: childCarCon,
+                        itemCount: abakadaList[index].length,
+                        options: CarouselOptions(
+                          scrollDirection: Axis.horizontal,
+                          height: 400,
+                          enlargeCenterPage: true,
+                          enableInfiniteScroll: false,
+                          initialPage: 0,
+                          autoPlay: false,
+                          viewportFraction: 0.8,
+                        ),
+                        itemBuilder: (context, cardIndex, cardRealIndex) {
+                          // return numberCards[index][cardIndex];
+                          return LessonCard(
+                              content:
+                                  abakadaContent(abakadaList[index][cardIndex]),
+                              label: abakadaList[index][cardIndex].label,
+                              onNext: () {
+                                if (abakadaList.length - 1 == index &&
+                                    abakadaList[index].length - 1 ==
+                                        cardIndex) {
+                                  showDialog(
+                                    context: context,
+                                    barrierDismissible: false,
+                                    builder: (context) =>
+                                        const FinishModuleDialog(
+                                      route: FilipinoStartQuizScreen(),
+                                    ),
+                                  );
+                                } else if (abakadaList[index].length - 1 ==
+                                    cardIndex) {
+                                  childCarCon.animateToPage(0);
+                                  parentCarCon.nextPage();
+                                } else {
+                                  childCarCon.nextPage();
+                                }
+                              },
+                              onPrevious: () {
+                                if (cardIndex == 0) {
+                                  parentCarCon.previousPage();
+                                } else {
+                                  childCarCon.previousPage();
+                                }
+                              },
+                              btnColor: 0xFFB169FA,
+                              btnShadowColor: 0xFF782EFB,
+                              showPrevBtn: index > 0 || cardIndex > 0);
                         },
                       ),
-                      itemCount: abakadaList.length,
-                      itemBuilder: (context, index, realIndex) {
-                        return GestureDetector(
-                            onTap: () {
-                              // showDialog(
-                              //   context: context,
-                              //   builder: (BuildContext context) {
-                              //     return AlertDialog(
-                              //       title: Text(
-                              //         "alert",
-                              //         textAlign: TextAlign.center,
-                              //       ),
-                              //     );
-                              //   },
-                              // );
-                            },
-                            child: LessonCard(
-                                content: abakadaContent(abakadaList[index]),
-                                label: abakadaList[index].label,
-                                onNext: () {
-                                  _carCon.nextPage();
-                                  if (_currentIndex == abakadaList.length - 1) {
-                                    showDialog(
-                                      barrierDismissible: false,
-                                      context: context,
-                                      builder: (context) =>
-                                          const FinishModuleDialog(
-                                        route: AbakadaQuizScreen(),
-                                      ),
-                                    );
-                                  } else {
-                                    _carCon.nextPage();
-                                  }
-                                },
-                                onPrevious: () {
-                                  _carCon.previousPage();
-                                }));
-                      },
-                    ),
-                    const Gap(30),
-                    // Center(
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.center,
-                    //     children: List.generate(abakadaList.length, (index) {
-                    //       return GestureDetector(
-                    //         child: Container(
-                    //           margin:
-                    //               const EdgeInsets.symmetric(horizontal: 4.0),
-                    //           width: 10,
-                    //           height: 10,
-                    //           decoration: BoxDecoration(
-                    //             shape: BoxShape.circle,
-                    //             color: _currentIndex == index
-                    //                 ? Colors.blueAccent
-                    //                 : Colors.grey,
-                    //           ),
-                    //         ),
-                    //       );
-                    //     }),
-                    //   ),
-                    // ),
-                  ],
+                    );
+                  },
                 ),
               ),
               const Gap(20),
@@ -339,9 +290,15 @@ class _AbakadaScreenState extends State<AbakadaScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 10.0, right: 10.0),
-            child: Icon(Icons.volume_up_rounded),
+          Container(
+            margin: EdgeInsets.only(top: 5, right: 5),
+            child: CircleButton(
+                color: Colors.purpleAccent,
+                shadowColor: Colors.purple,
+                icon: Icons.volume_up_rounded,
+                method: () {
+                  print("Volume Clicked!");
+                }),
           ),
           Expanded(
               child: Container(
@@ -360,7 +317,7 @@ class _AbakadaScreenState extends State<AbakadaScreen> {
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
-                                childAspectRatio: 1.3,
+                                childAspectRatio: 1.4,
                                 mainAxisSpacing: 2.0,
                                 crossAxisSpacing: 2.0,
                               ),

@@ -4,8 +4,8 @@ import 'package:flutter_application_1/components/top_bar.dart';
 // import 'package:flutter_application_1/screens/learning/all_aboard/shapes.dart';
 import 'package:flutter_application_1/screens/learning/filipino/abakada.dart';
 
-class AbakadaStartScreen extends StatelessWidget {
-  const AbakadaStartScreen({super.key});
+class FilipinoStartLessonScreen extends StatelessWidget {
+  const FilipinoStartLessonScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
