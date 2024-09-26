@@ -7,16 +7,18 @@ import '../utils/circle_button.dart';
 
 class NumberWithExampleCard extends StatefulWidget {
   final NumberExample number;
-  final CarouselSliderController? carCon;
-  final int currentIndex;
-  final int totalNumbers;
+  final CarouselSliderController? parentCarCon, childCarCon;
+  final int currentIndex, totalNumbers, rowCurIndex, colCurIndex;
 
   const NumberWithExampleCard({
     super.key,
     required this.number,
-    this.carCon,
+    this.parentCarCon,
+    this.childCarCon,
     required this.currentIndex,
     required this.totalNumbers,
+    required this.colCurIndex,
+    required this.rowCurIndex,
   });
 
   @override
@@ -117,36 +119,19 @@ class _NumberWithExampleCardState extends State<NumberWithExampleCard> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               if(widget.currentIndex > 0)
-                CircleButton(
+                const CircleButton(
                   color: Colors.amberAccent,
                   shadowColor: Colors.amber,
                   icon: Icons.arrow_back_rounded,
-                  method: () {
-                    if(widget.currentIndex > 0) {
-                      widget.carCon!.previousPage();
-                    }
-                  },
                 ),
                 const SizedBox(height: 10.0, width: 10.0,),
 
 
 
-              CircleButton(
+              const CircleButton(
                 color: Colors.amberAccent,
                 shadowColor: Colors.amber,
                 icon: Icons.arrow_forward_rounded,
-                method: () {
-                  if (widget.currentIndex == widget.totalNumbers - 1) {
-                    showDialog(
-                      context: context,
-                      builder: (context) => const FinishModuleDialog(
-                        route: NumbersQuizScreen(),
-                      ),
-                    );
-                  } else {
-                    widget.carCon!.nextPage();
-                  }
-                },
               ),
             ],
           ),

@@ -1,9 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/mathematics/add_subtract_card.dart';
-import 'package:flutter_application_1/components/mathematics/number_card.dart';
-import 'package:flutter_application_1/components/mathematics/number_with_example_card.dart';
-import 'package:flutter_application_1/models/mathematics/number_example.dart';
 import 'package:flutter_application_1/models/mathematics/number_only.dart';
 import 'package:gap/gap.dart';
 import '../../../components/nice_button.dart';
