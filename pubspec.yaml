@@ -63,6 +63,7 @@ flutter:
   assets:
     - assets/sounds/alphabet/letters/
     - assets/sounds/alphabet/example/
+    - assets/sounds/alphabet/
     - assets/sounds/shapes/
     - assets/sounds/
     - assets/images/

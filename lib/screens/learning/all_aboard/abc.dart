@@ -415,7 +415,7 @@ class _AbcScreenState extends State<AbcScreen> {
 
   void _nextCard(index, childCarCon, rowCurIndex) {
     if (colCurIndex == alphabet.length - 1 &&
-        rowCurIndex == alphabet[index].length) {
+        rowCurIndex == alphabet[index].length - 1) {
       showDialog(
         context: context,
         barrierDismissible: false,
