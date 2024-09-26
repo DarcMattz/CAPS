@@ -5,7 +5,7 @@ import 'package:flutter_application_1/components/nice_button.dart';
 import 'package:flutter_application_1/screens/learning/mathematics/add_subtract.dart';
 import 'package:flutter_application_1/screens/learning/mathematics/numbers_quiz.dart';
 import 'package:flutter_application_1/screens/learning/mathematics/numbers_start_lesson_one.dart';
-import 'package:flutter_application_1/screens/learning/mathematics/numbers_start_lesson_three.dart';
+import 'package:flutter_application_1/screens/learning/mathematics/numbers_start_lesson_two.dart';
 
 class MathematicsScreen extends StatefulWidget {
   const MathematicsScreen({super.key});
@@ -31,7 +31,7 @@ class _MathematicsScreenState extends State<MathematicsScreen> {
     const Building(
         module: "mathematics",
         imagePath: 'assets/images/mathematics/add_subtract.png',
-        route: NumbersStartLessonThreeScreen()),
+        route: NumbersStartLessonTwoScreen()),
 
     const Building(
         module: "mathematics",

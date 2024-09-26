@@ -7,18 +7,20 @@ import 'package:flutter_application_1/screens/learning/mathematics/numbers_quiz.
 
 class NumberCard extends StatefulWidget {
   final NumberOnly number;
-  final CarouselSliderController? carCon;
-  final int currentIndex;
-  final int totalNumbers;
+  final CarouselSliderController? parentCarCon, childCarCon;
+  final int currentIndex, totalNumbers, rowCurIndex, colCurIndex;
   final bool withSound;
 
   const NumberCard({
     super.key,
     required this.number,
-    this.carCon,
+    this.parentCarCon,
+    this.childCarCon,
     required this.currentIndex,
     required this.totalNumbers,
     required this.withSound,
+    required this.colCurIndex,
+    required this.rowCurIndex,
   });
 
   @override
@@ -90,33 +92,16 @@ class _NumberCardState extends State<NumberCard> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               if (widget.currentIndex > 0)
-                CircleButton(
+                const CircleButton(
                   color: Colors.amberAccent,
                   shadowColor: Colors.amber,
                   icon: Icons.arrow_back_rounded,
-                  method: () {
-                    if (widget.currentIndex > 0) {
-                      widget.carCon!.previousPage();
-                    }
-                  },
                 ),
-              CircleButton(
+               const SizedBox(height: 10.0, width: 10.0,),
+              const CircleButton(
                 color: Colors.amberAccent,
                 shadowColor: Colors.amber,
                 icon: Icons.arrow_forward_rounded,
-                method: () {
-                  if (widget.currentIndex == widget.totalNumbers - 1) {
-                    showDialog(
-                      context: context,
-                      barrierDismissible: false,
-                      builder: (context) => const FinishModuleDialog(
-                        route: NumbersQuizScreen(),
-                      ),
-                    );
-                  } else {
-                    widget.carCon!.nextPage();
-                  }
-                },
               ),
             ],
           ),

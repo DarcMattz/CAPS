@@ -3,8 +3,8 @@ import 'package:flutter_application_1/screens/learning/mathematics/add_subtract.
 import '../../../components/start_card.dart';
 import '../../../components/top_bar.dart';
 
-class NumbersStartLessonThreeScreen extends StatelessWidget {
-  const NumbersStartLessonThreeScreen({super.key});
+class NumbersStartLessonTwoScreen extends StatelessWidget {
+  const NumbersStartLessonTwoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -11,7 +11,7 @@ class CircleButton extends StatefulWidget {
     required this.color,
     required this.shadowColor,
     required this.icon,
-    required this.method,
+    this.method,
     // this.route,
   });
 
