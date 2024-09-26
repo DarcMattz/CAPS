@@ -1,21 +1,21 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/components/finish_module_dialog.dart';
+import 'package:flutter_application_1/components/utils/circle_button.dart';
 import 'package:flutter_application_1/models/shape.dart';
-import 'package:flutter_application_1/screens/learning/all_aboard/shapes_quiz.dart';
+import 'package:gap/gap.dart';
 
 class ShapeCard extends StatefulWidget {
   final Shape shape;
-  final CarouselSliderController? carCon;
-  final int currentIndex;
-  final int totalShapes;
+  final void Function() nextCallback;
+  final void Function() prevCallback;
+  final void Function() soundCallback;
+  final bool isFirst;
 
   const ShapeCard({
-    super.key,
     required this.shape,
-    this.carCon,
-    required this.currentIndex,
-    required this.totalShapes,
+    required this.nextCallback,
+    required this.prevCallback,
+    required this.soundCallback,
+    required this.isFirst,
   });
 
   @override
@@ -42,36 +42,46 @@ class _ShapeCardState extends State<ShapeCard> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            child: Container(
-              margin: const EdgeInsets.only(
-                top: 10.0,
-                left: 10.0,
-                right: 10.0,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.blue[100],
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 10,
-                    offset: Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.asset(
-                        widget.shape.imagePath,
-                        fit: BoxFit.contain,
+            flex: 1,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.blue[100],
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 10,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Stack(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(20.0),
+                      height: double.infinity,
+                      child: Center(
+                        child: Image.asset(
+                          widget.shape.imagePath,
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    Positioned(
+                      right: 5.0,
+                      top: 5.0,
+                      child: CircleButton(
+                        color: Colors.purpleAccent,
+                        shadowColor: Colors.purple,
+                        icon: Icons.volume_up_rounded,
+                        method: widget.soundCallback,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -80,14 +90,14 @@ class _ShapeCardState extends State<ShapeCard> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(
-                  onPressed: () {
-                    if (widget.carCon != null) {
-                      widget.carCon!.previousPage();
-                    }
-                  },
-                  icon: const Icon(Icons.arrow_back),
-                ),
+                !widget.isFirst
+                    ? CircleButton(
+                        color: Colors.amberAccent,
+                        shadowColor: Colors.yellow,
+                        icon: Icons.arrow_back_rounded,
+                        method: widget.prevCallback,
+                      )
+                    : const Gap(40),
                 Text(
                   widget.shape.label,
                   style: const TextStyle(
@@ -95,20 +105,11 @@ class _ShapeCardState extends State<ShapeCard> {
                     color: Colors.orange,
                   ),
                 ),
-                IconButton(
-                  onPressed: () {
-                    if (widget.currentIndex == widget.totalShapes - 1) {
-                      showDialog(
-                        context: context,
-                        builder: (context) => const FinishModuleDialog(
-                          route: ShapesQuizScreen(),
-                        ),
-                      );
-                    } else if (widget.carCon != null) {
-                      widget.carCon!.nextPage();
-                    }
-                  },
-                  icon: const Icon(Icons.arrow_forward),
+                CircleButton(
+                  color: Colors.amberAccent,
+                  shadowColor: Colors.yellow,
+                  icon: Icons.arrow_forward_rounded,
+                  method: widget.nextCallback,
                 ),
               ],
             ),

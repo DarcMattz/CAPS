@@ -42,7 +42,6 @@ class _NumberCardState extends State<NumberCard> {
           ),
         ],
       ),
-
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -61,52 +60,46 @@ class _NumberCardState extends State<NumberCard> {
                   ),
                 ],
               ),
-              child: Stack(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(30.0),
-                      height: double.infinity,
-                      child: Image.asset(
-                        widget.number.numberImage,
-                        fit: BoxFit.contain,
-                        width: double.infinity,
-                      ),
-                    ),
-
-                    if(widget.withSound)
-                      Positioned(
-                      right: 5.0,
-                      top: 5.0,
-                      child: CircleButton(
-                          color: Colors.purpleAccent,
-                          shadowColor: Colors.purple,
-                          icon: Icons.volume_up_rounded,
-                          method: () {}
-                      ),
-                    ),
-                  ]
-              ),
+              child: Stack(children: [
+                Container(
+                  padding: const EdgeInsets.all(30.0),
+                  height: double.infinity,
+                  child: Image.asset(
+                    widget.number.numberImage,
+                    fit: BoxFit.contain,
+                    width: double.infinity,
+                  ),
+                ),
+                if (widget.withSound)
+                  Positioned(
+                    right: 5.0,
+                    top: 5.0,
+                    child: CircleButton(
+                        color: Colors.purpleAccent,
+                        shadowColor: Colors.purple,
+                        icon: Icons.volume_up_rounded,
+                        method: () {}),
+                  ),
+              ]),
             ),
           ),
-
-          const SizedBox(height: 10,),
-
+          const SizedBox(
+            height: 10,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if(widget.currentIndex > 0)
+              if (widget.currentIndex > 0)
                 CircleButton(
                   color: Colors.amberAccent,
                   shadowColor: Colors.amber,
                   icon: Icons.arrow_back_rounded,
                   method: () {
-                    if(widget.currentIndex > 0) {
+                    if (widget.currentIndex > 0) {
                       widget.carCon!.previousPage();
                     }
                   },
                 ),
-
-
               CircleButton(
                 color: Colors.amberAccent,
                 shadowColor: Colors.amber,
@@ -115,6 +108,7 @@ class _NumberCardState extends State<NumberCard> {
                   if (widget.currentIndex == widget.totalNumbers - 1) {
                     showDialog(
                       context: context,
+                      barrierDismissible: false,
                       builder: (context) => const FinishModuleDialog(
                         route: NumbersQuizScreen(),
                       ),

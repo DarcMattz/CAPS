@@ -108,6 +108,7 @@ class _CareScreenState extends State<CareScreen> {
                           onTap: () {
                             showDialog(
                               context: context,
+                              barrierDismissible: false,
                               builder: (BuildContext context) {
                                 return AlertDialog(
                                   title: Text(

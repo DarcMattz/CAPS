@@ -418,6 +418,7 @@ class _AbcScreenState extends State<AbcScreen> {
         rowCurIndex == alphabet[index].length) {
       showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (context) => const FinishModuleDialog(
           route: AbcQuizScreen(),
         ),

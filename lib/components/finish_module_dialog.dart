@@ -1,14 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/audioplayer/audio_service.dart';
 import 'package:flutter_application_1/components/nice_button.dart';
 import 'package:gap/gap.dart';
 
-class FinishModuleDialog extends StatelessWidget {
+class FinishModuleDialog extends StatefulWidget {
   final Widget route;
 
   const FinishModuleDialog({
     super.key,
     required this.route,
   });
+
+  @override
+  State<FinishModuleDialog> createState() => _FinishModuleDialogState();
+}
+
+class _FinishModuleDialogState extends State<FinishModuleDialog> {
+  final AudioService _audioService = AudioService();
+
+  @override
+  void initState() {
+    super.initState();
+    _play();
+  }
+
+  @override
+  void dispose() {
+    _audioService.dispose();
+    super.dispose();
+  }
+
+  void _play() {
+    _audioService.playFromAssets("sounds/ready.m4a");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +92,7 @@ class FinishModuleDialog extends StatelessWidget {
                         Navigator.pop(context);
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (_) => route),
+                          MaterialPageRoute(builder: (_) => widget.route),
                         );
                       },
                     ),

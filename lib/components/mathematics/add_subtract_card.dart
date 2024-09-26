@@ -95,6 +95,7 @@ class _NumbersLessonThreeCardState extends State<NumbersLessonThreeCard> {
                   if (widget.currentIndex == widget.totalNumbers - 1) {
                     showDialog(
                       context: context,
+                      barrierDismissible: false,
                       builder: (context) => const FinishModuleDialog(
                         route: NumbersQuizScreen(),
                       ),

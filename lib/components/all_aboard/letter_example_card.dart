@@ -95,7 +95,7 @@ class _LetterExampleCardState extends State<LetterExampleCard> {
               Text(
                 widget.letterExample.label,
                 style: const TextStyle(
-                  fontSize: 28,
+                  fontSize: 25,
                   color: Colors.orange,
                 ),
               ),
