@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/start_card.dart';
 import 'package:flutter_application_1/components/top_bar.dart';
-// import 'package:flutter_application_1/screens/learning/all_aboard/shapes.dart';
-import 'package:flutter_application_1/screens/learning/filipino/abakada.dart';
 
 class FilipinoStartLessonScreen extends StatelessWidget {
-  const FilipinoStartLessonScreen({super.key});
+  final String imagePath;
+  final Widget route;
+
+  const FilipinoStartLessonScreen(
+      {super.key, required this.imagePath, required this.route});
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +25,10 @@ class FilipinoStartLessonScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const TopBar(),
-              const Expanded(
+              Expanded(
                 child: StartCard(
-                  imagePath: "assets/images/filipino/learn_abakada.png",
-                  route: AbakadaScreen(),
+                  imagePath: imagePath,
+                  route: route,
                 ),
               ),
               Row(

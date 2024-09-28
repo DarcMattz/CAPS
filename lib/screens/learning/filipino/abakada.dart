@@ -27,7 +27,8 @@ class Abakada {
 }
 
 class AbakadaScreen extends StatefulWidget {
-  const AbakadaScreen({super.key});
+  final Widget quizScreen;
+  const AbakadaScreen({super.key, required this.quizScreen});
 
   @override
   State<AbakadaScreen> createState() => _AbakadaScreenState();
@@ -161,8 +162,6 @@ class _AbakadaScreenState extends State<AbakadaScreen> {
 
   @override
   Widget build(BuildContext context) {
-    int currentIndex = 0;
-
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -220,10 +219,8 @@ class _AbakadaScreenState extends State<AbakadaScreen> {
                                   showDialog(
                                     context: context,
                                     barrierDismissible: false,
-                                    builder: (context) =>
-                                        const FinishModuleDialog(
-                                      route: FilipinoStartQuizScreen(),
-                                    ),
+                                    builder: (context) => FinishModuleDialog(
+                                        route: widget.quizScreen),
                                   );
                                 } else if (abakadaList[index].length - 1 ==
                                     cardIndex) {
