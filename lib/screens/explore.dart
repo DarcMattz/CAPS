@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/components/nice_button.dart';
+import 'package:flutter_application_1/components/utils/nice_button.dart';
 import 'package:flutter_application_1/components/modules.dart';
 import 'package:flutter_application_1/screens/explore/geography.dart';
 import 'package:flutter_application_1/screens/explore/play.dart';

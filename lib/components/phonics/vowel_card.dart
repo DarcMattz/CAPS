@@ -1,17 +1,20 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/vowel.dart';
+import 'package:flutter_application_1/components/utils/circle_button.dart';
+import 'package:flutter_application_1/models/vowels/vowel.dart';
 
 class VowelCard extends StatefulWidget {
   final Vowel vowel;
   final void Function() nextCallback;
   final void Function() prevCallback;
+  final void Function() soundCallback;
 
   const VowelCard({
     super.key,
     required this.nextCallback,
     required this.prevCallback,
     required this.vowel,
+    required this.soundCallback,
   });
 
   @override
@@ -55,35 +58,46 @@ class _VowelCardState extends State<VowelCard> {
                   ),
                 ],
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+              child: Stack(
                 children: [
-                  // const Padding(
-                  //   padding: EdgeInsets.only(top: 10.0, right: 10.0),
-                  //   child: Icon(Icons.volume_up_rounded),
-                  // ),
-                  Expanded(
-                    child: Center(
-                      child: AutoSizeText(
-                        widget.vowel.vowel,
-                        style:
-                            TextStyle(fontSize: 200, color: Colors.purple[700]),
-                        maxLines: 1,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(16)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Expanded(
                         child: Center(
-                          child: Image.asset(
-                            widget.vowel.imagePath,
-                            fit: BoxFit.contain,
+                          child: AutoSizeText(
+                            widget.vowel.vowel,
+                            style: TextStyle(
+                                fontSize: 200, color: Colors.purple[700]),
+                            maxLines: 1,
                           ),
                         ),
                       ),
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(16)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(
+                              child: Image.asset(
+                                widget.vowel.imagePath,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Positioned(
+                    right: 5.0,
+                    top: 5.0,
+                    child: CircleButton(
+                      color: Colors.purpleAccent,
+                      shadowColor: Colors.purple,
+                      icon: Icons.volume_up_rounded,
+                      method: widget.soundCallback,
                     ),
                   ),
                 ],
@@ -95,20 +109,24 @@ class _VowelCardState extends State<VowelCard> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(
-                  onPressed: widget.prevCallback,
-                  icon: const Icon(Icons.arrow_back),
+                CircleButton(
+                  color: Colors.amberAccent,
+                  shadowColor: Colors.yellow,
+                  icon: Icons.arrow_back_rounded,
+                  method: widget.prevCallback,
                 ),
                 Text(
                   widget.vowel.imageName,
                   style: const TextStyle(
-                    fontSize: 28,
+                    fontSize: 25,
                     color: Colors.orange,
                   ),
                 ),
-                IconButton(
-                  onPressed: widget.nextCallback,
-                  icon: const Icon(Icons.arrow_forward),
+                CircleButton(
+                  color: Colors.amberAccent,
+                  shadowColor: Colors.yellow,
+                  icon: Icons.arrow_forward_rounded,
+                  method: widget.nextCallback,
                 ),
               ],
             ),

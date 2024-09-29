@@ -1,11 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/audioplayer/audio_service.dart';
 import 'package:flutter_application_1/components/start_card.dart';
 import 'package:flutter_application_1/components/top_bar.dart';
 import 'package:flutter_application_1/screens/learning/science/body.dart';
 
-
-class BodyStartScreen extends StatelessWidget {
+class BodyStartScreen extends StatefulWidget {
   const BodyStartScreen({super.key});
+
+  @override
+  State<BodyStartScreen> createState() => _BodyStartScreenState();
+}
+
+class _BodyStartScreenState extends State<BodyStartScreen> {
+  final AudioService _audioService = AudioService();
+
+  @override
+  void initState() {
+    super.initState();
+    _play();
+  }
+
+  @override
+  void dispose() {
+    _audioService.dispose();
+    super.dispose();
+  }
+
+  void _play() {
+    _audioService.playFromAssets("sounds/science/body/teach_human_body.m4a");
+  }
 
   @override
   Widget build(BuildContext context) {

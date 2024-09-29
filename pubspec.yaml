@@ -65,6 +65,10 @@ flutter:
     - assets/sounds/alphabet/example/
     - assets/sounds/alphabet/
     - assets/sounds/shapes/
+    - assets/sounds/vowels/
+    - assets/sounds/science/body/
+    - assets/sounds/science/care/
+    - assets/sounds/science/senses/
     - assets/sounds/
     - assets/images/
     - assets/images/science/care/

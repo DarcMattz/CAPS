@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/mathematics/add_subtract_card.dart';
 import 'package:flutter_application_1/models/mathematics/number_only.dart';
 import 'package:gap/gap.dart';
-import '../../../components/nice_button.dart';
+import '../../../components/utils/nice_button.dart';
 
 class AddSubtractScreen extends StatefulWidget {
   const AddSubtractScreen({super.key});
@@ -89,7 +89,7 @@ class _AddSubtractScreenState extends State<AddSubtractScreen> {
                           return GestureDetector(
                             child: Container(
                               margin:
-                              const EdgeInsets.symmetric(horizontal: 4.0),
+                                  const EdgeInsets.symmetric(horizontal: 4.0),
                               width: 10,
                               height: 10,
                               decoration: BoxDecoration(
