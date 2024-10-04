@@ -1,8 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/components/care_card.dart';
-import 'package:flutter_application_1/components/nice_button.dart';
-import 'package:flutter_application_1/models/care.dart';
+import 'package:flutter_application_1/audioplayer/audio_service.dart';
+import 'package:flutter_application_1/components/finish_module_dialog.dart';
+import 'package:flutter_application_1/components/science/care_card.dart';
+import 'package:flutter_application_1/components/utils/nice_button.dart';
+import 'package:flutter_application_1/models/science/care.dart';
+import 'package:flutter_application_1/screens/learning/science/care_quiz.dart';
 import 'package:gap/gap.dart';
 
 class CareScreen extends StatefulWidget {
@@ -13,6 +16,7 @@ class CareScreen extends StatefulWidget {
 }
 
 class _CareScreenState extends State<CareScreen> {
+  final AudioService _audioService = AudioService();
   int _currentIndex = 0;
   final CarouselSliderController _carCon = CarouselSliderController();
 
@@ -20,40 +24,87 @@ class _CareScreenState extends State<CareScreen> {
     Care(
       description: 'Wake up early in the morning.',
       imagePath: 'assets/images/science/care/care_1.png',
+      soundPath: 'sounds/science/care/wake_early.m4a',
     ),
     Care(
       description: 'Then, wash your face.',
       imagePath: 'assets/images/science/care/care_2.png',
+      soundPath: 'sounds/science/care/wash_face.m4a',
     ),
     Care(
       description: 'Wash your hand before you eat.',
       imagePath: 'assets/images/science/care/care_3.png',
+      soundPath: 'sounds/science/care/wash_hands.m4a',
     ),
     Care(
       description: 'Eat healthy food.',
       imagePath: 'assets/images/science/care/care_4.png',
+      soundPath: 'sounds/science/care/eat_food.m4a',
     ),
     Care(
       description: 'Brush your teeth after you eat.',
       imagePath: 'assets/images/science/care/care_5.png',
+      soundPath: 'sounds/science/care/brush_teeth.m4a',
     ),
     Care(
       description: 'Always take a bath.',
       imagePath: 'assets/images/science/care/care_6.png',
+      soundPath: 'sounds/science/care/take_bath.m4a',
     ),
     Care(
       description: 'Brush your hair.',
       imagePath: 'assets/images/science/care/care_7.png',
+      soundPath: 'sounds/science/care/brush_hair.m4a',
     ),
     Care(
       description: 'Clean your ears.',
       imagePath: 'assets/images/science/care/care_8.png',
+      soundPath: 'sounds/science/care/clean_ears.m4a',
     ),
     Care(
       description: 'Sleep early.',
       imagePath: 'assets/images/science/care/care_9.png',
+      soundPath: 'sounds/science/care/sleep_early.m4a',
     ),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _audioService.setOnComplete(() {});
+  }
+
+  @override
+  void dispose() {
+    _audioService.dispose();
+    super.dispose();
+  }
+
+  void _play(soundPath) async {
+    await _audioService.playFromAssets(soundPath);
+  }
+
+  void _stop() async {
+    await _audioService.stop();
+  }
+
+  void _nextCard() {
+    if (_currentIndex == cares.length - 1) {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const FinishModuleDialog(
+          route: CareQuizScreen(),
+        ),
+      );
+    } else {
+      _carCon.nextPage();
+    }
+  }
+
+  void _previousCard() {
+    _carCon.previousPage();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,73 +135,31 @@ class _CareScreenState extends State<CareScreen> {
                 ),
               ),
               Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    CarouselSlider.builder(
-                      carouselController: _carCon,
-                      options: CarouselOptions(
-                        height: 400,
-                        enlargeCenterPage: true,
-                        enableInfiniteScroll: false,
-                        initialPage: 0,
-                        autoPlay: false,
-                        viewportFraction: 0.8,
-                        onPageChanged: (index, reason) {
-                          setState(() {
-                            _currentIndex = index;
-                          });
-                        },
-                      ),
-                      itemCount: cares.length,
-                      itemBuilder: (context, index, realIndex) {
-                        return GestureDetector(
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              barrierDismissible: false,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  title: Text(
-                                    cares[index].description,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                          child: CareCard(
-                            care: cares[index],
-                            carCon: _carCon,
-                            currentIndex: _currentIndex,
-                            totalShapes: cares.length,
-                          ),
-                        );
+                child: CarouselSlider.builder(
+                  carouselController: _carCon,
+                  options: CarouselOptions(
+                    height: 400,
+                    enlargeCenterPage: true,
+                    enableInfiniteScroll: false,
+                    initialPage: 0,
+                    autoPlay: false,
+                    viewportFraction: 0.8,
+                    onPageChanged: (index, reason) {
+                      _currentIndex = index;
+                      _stop();
+                    },
+                  ),
+                  itemCount: cares.length,
+                  itemBuilder: (context, index, realIndex) {
+                    return CareCard(
+                      care: cares[index],
+                      nextCallback: _nextCard,
+                      prevCallback: _previousCard,
+                      soundCallback: () {
+                        _play(cares[index].soundPath);
                       },
-                    ),
-                    const Gap(30),
-                    Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(cares.length, (index) {
-                          return GestureDetector(
-                            child: Container(
-                              margin:
-                                  const EdgeInsets.symmetric(horizontal: 4.0),
-                              width: 10,
-                              height: 10,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: _currentIndex == index
-                                    ? Colors.blueAccent
-                                    : Colors.grey,
-                              ),
-                            ),
-                          );
-                        }),
-                      ),
-                    ),
-                  ],
+                    );
+                  },
                 ),
               ),
               const Gap(20),

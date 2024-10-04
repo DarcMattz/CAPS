@@ -2,9 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/audioplayer/audio_service.dart';
 import 'package:flutter_application_1/components/finish_module_dialog.dart';
-import 'package:flutter_application_1/components/nice_button.dart';
+import 'package:flutter_application_1/components/utils/nice_button.dart';
 import 'package:flutter_application_1/components/shape_card.dart';
-import 'package:flutter_application_1/models/shape.dart';
+import 'package:flutter_application_1/models/all_aboard/shape.dart';
 import 'package:flutter_application_1/screens/learning/all_aboard/shapes_quiz.dart';
 import 'package:gap/gap.dart';
 

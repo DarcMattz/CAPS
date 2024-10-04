@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/audioplayer/audio_service.dart';
-import 'package:flutter_application_1/components/nice_button.dart';
+import 'package:flutter_application_1/components/utils/nice_button.dart';
 import 'package:gap/gap.dart';
 
 class FinishModuleDialog extends StatefulWidget {

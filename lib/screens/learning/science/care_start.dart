@@ -1,10 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/audioplayer/audio_service.dart';
 import 'package:flutter_application_1/components/start_card.dart';
 import 'package:flutter_application_1/components/top_bar.dart';
 import 'package:flutter_application_1/screens/learning/science/care.dart';
 
-class CareStartScreen extends StatelessWidget {
+class CareStartScreen extends StatefulWidget {
   const CareStartScreen({super.key});
+
+  @override
+  State<CareStartScreen> createState() => _CareStartScreenState();
+}
+
+class _CareStartScreenState extends State<CareStartScreen> {
+  final AudioService _audioService = AudioService();
+
+  @override
+  void initState() {
+    super.initState();
+    _play();
+  }
+
+  @override
+  void dispose() {
+    _audioService.dispose();
+    super.dispose();
+  }
+
+  void _play() {
+    _audioService.playFromAssets("sounds/science/care/learn_take_care.m4a");
+  }
 
   @override
   Widget build(BuildContext context) {

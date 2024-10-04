@@ -5,7 +5,7 @@ import 'package:flutter_application_1/components/all_aboard/letter_example_card.
 import 'package:flutter_application_1/components/all_aboard/letter_trace_card.dart';
 import 'package:flutter_application_1/components/finish_module_dialog.dart';
 import 'package:flutter_application_1/components/all_aboard/letter_card.dart';
-import 'package:flutter_application_1/components/nice_button.dart';
+import 'package:flutter_application_1/components/utils/nice_button.dart';
 import 'package:flutter_application_1/models/all_aboard/alphabet.dart';
 import 'package:flutter_application_1/models/all_aboard/letter.dart';
 import 'package:flutter_application_1/models/all_aboard/letter_example.dart';

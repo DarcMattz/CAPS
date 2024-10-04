@@ -1,8 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/mathematics/number_example.dart';
-import 'package:flutter_application_1/screens/learning/mathematics/numbers_quiz.dart';
-import '../finish_module_dialog.dart';
+
 import '../utils/circle_button.dart';
 
 class NumberWithExampleCard extends StatefulWidget {
@@ -113,14 +112,16 @@ class _NumberWithExampleCardState extends State<NumberWithExampleCard> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if(widget.currentIndex > 0)
+              if (widget.currentIndex > 0)
                 const CircleButton(
                   color: Colors.amberAccent,
                   shadowColor: Colors.amber,
                   icon: Icons.arrow_back_rounded,
                 ),
-                const SizedBox(height: 10.0, width: 10.0,),
-              
+              const SizedBox(
+                height: 10.0,
+                width: 10.0,
+              ),
               const CircleButton(
                 color: Colors.amberAccent,
                 shadowColor: Colors.amber,

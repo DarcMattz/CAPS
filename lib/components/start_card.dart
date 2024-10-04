@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/components/nice_button.dart';
+import 'package:flutter_application_1/components/utils/nice_button.dart';
 
 class StartCard extends StatelessWidget {
   final String imagePath;
@@ -51,11 +51,11 @@ class StartCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Image.asset(
-                    imagePath,
-                    fit: BoxFit.contain,
-                  ),
+                  imagePath,
+                  fit: BoxFit.contain,
+                ),
               ),
-              ),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(6, 20, 6, 6),
