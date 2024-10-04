@@ -1,9 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/components/finish_module_dialog.dart';
+
 import 'package:flutter_application_1/components/utils/circle_button.dart';
 import 'package:flutter_application_1/models/mathematics/number_only.dart';
-import 'package:flutter_application_1/screens/learning/mathematics/numbers_quiz.dart';
 
 class NumberCard extends StatefulWidget {
   final NumberOnly number;
@@ -97,7 +96,10 @@ class _NumberCardState extends State<NumberCard> {
                   shadowColor: Colors.amber,
                   icon: Icons.arrow_back_rounded,
                 ),
-               const SizedBox(height: 10.0, width: 10.0,),
+              const SizedBox(
+                height: 10.0,
+                width: 10.0,
+              ),
               const CircleButton(
                 color: Colors.amberAccent,
                 shadowColor: Colors.amber,

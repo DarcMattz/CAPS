@@ -27,7 +27,7 @@ class _VowelsStartScreenState extends State<VowelsStartScreen> {
   }
 
   void _play() {
-    _audioService.playFromAssets("sounds/alphabet/learn_vowels.m4a");
+    _audioService.playFromAssets("sounds/vowels/learn_vowels.m4a");
   }
 
   @override
