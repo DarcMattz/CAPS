@@ -8,15 +8,13 @@ import '../utils/circle_button.dart';
 class NumberWithExampleCard extends StatefulWidget {
   final NumberExample number;
   final CarouselSliderController? parentCarCon, childCarCon;
-  final int currentIndex, totalNumbers, rowCurIndex, colCurIndex;
+  final int rowCurIndex, colCurIndex;
 
   const NumberWithExampleCard({
     super.key,
     required this.number,
     this.parentCarCon,
     this.childCarCon,
-    required this.currentIndex,
-    required this.totalNumbers,
     required this.colCurIndex,
     required this.rowCurIndex,
   });
@@ -113,18 +111,43 @@ class _NumberWithExampleCardState extends State<NumberWithExampleCard> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if(widget.currentIndex > 0)
-                const CircleButton(
+              if (widget.colCurIndex > 0)
+                CircleButton(
                   color: Colors.amberAccent,
                   shadowColor: Colors.amber,
                   icon: Icons.arrow_back_rounded,
+                  method: () {
+                    if (widget.rowCurIndex > 0) {
+                      widget.childCarCon!.previousPage();
+                    } else {
+                      widget.parentCarCon!.previousPage();
+                    }
+                  },
                 ),
-                const SizedBox(height: 10.0, width: 10.0,),
-              
-              const CircleButton(
+              const SizedBox(
+                height: 10.0,
+                width: 10.0,
+              ),
+              CircleButton(
                 color: Colors.amberAccent,
                 shadowColor: Colors.amber,
                 icon: Icons.arrow_forward_rounded,
+                method: () {
+                  if (widget.colCurIndex <= 9) {
+                    if (widget.rowCurIndex == 1) {
+                      widget.parentCarCon!.nextPage();
+                      widget.childCarCon!.animateToPage(0);
+                    } else {
+                      widget.childCarCon!.nextPage();
+                    }
+                  } else {
+                    if (widget.rowCurIndex == 9) {
+                      print("DOne");
+                    } else {
+                      widget.childCarCon!.nextPage();
+                    }
+                  }
+                },
               ),
             ],
           ),
