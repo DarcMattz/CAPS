@@ -1,8 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/mathematics/number_example.dart';
-import 'package:flutter_application_1/screens/learning/mathematics/numbers_quiz.dart';
-import '../finish_module_dialog.dart';
+
 import '../utils/circle_button.dart';
 
 class NumberWithExampleCard extends StatefulWidget {

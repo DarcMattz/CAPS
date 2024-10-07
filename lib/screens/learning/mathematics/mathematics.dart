@@ -1,8 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/building.dart';
-import 'package:flutter_application_1/components/nice_button.dart';
-import 'package:flutter_application_1/screens/learning/mathematics/add_subtract.dart';
+import 'package:flutter_application_1/components/utils/nice_button.dart';
 import 'package:flutter_application_1/screens/learning/mathematics/numbers_quiz.dart';
 import 'package:flutter_application_1/screens/learning/mathematics/numbers_start_lesson_one.dart';
 import 'package:flutter_application_1/screens/learning/mathematics/numbers_start_lesson_two.dart';
@@ -22,17 +21,14 @@ class _MathematicsScreenState extends State<MathematicsScreen> {
         module: "mathematics",
         imagePath: 'assets/images/mathematics/numbers.png',
         route: NumbersStartLessonOneScreen()),
-
     const Building(
         module: "mathematics",
         imagePath: 'assets/images/quiz_lock.png',
         route: NumbersQuizScreen()),
-
     const Building(
         module: "mathematics",
         imagePath: 'assets/images/mathematics/add_subtract.png',
         route: NumbersStartLessonTwoScreen()),
-
     const Building(
         module: "mathematics",
         imagePath: 'assets/images/quiz_lock.png',

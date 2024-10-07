@@ -1,8 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/components/nice_button.dart';
-import 'package:flutter_application_1/components/sense_card.dart';
-import 'package:flutter_application_1/models/sense.dart';
+import 'package:flutter_application_1/audioplayer/audio_service.dart';
+import 'package:flutter_application_1/components/finish_module_dialog.dart';
+import 'package:flutter_application_1/components/utils/nice_button.dart';
+import 'package:flutter_application_1/components/science/sense_card.dart';
+import 'package:flutter_application_1/models/science/sense.dart';
+import 'package:flutter_application_1/screens/learning/science/senses_quiz.dart';
 import 'package:gap/gap.dart';
 
 class SensesScreen extends StatefulWidget {
@@ -13,6 +16,7 @@ class SensesScreen extends StatefulWidget {
 }
 
 class _SensesScreenState extends State<SensesScreen> {
+  final AudioService _audioService = AudioService();
   int _currentIndex = 0;
   final CarouselSliderController _carCon = CarouselSliderController();
 
@@ -20,24 +24,67 @@ class _SensesScreenState extends State<SensesScreen> {
     Sense(
       label: 'Sense of Sight',
       imagePath: 'assets/images/science/senses/sense_1.png',
+      soundPath: 'sounds/science/senses/sight.m4a',
     ),
     Sense(
       label: 'Sense of Smell',
       imagePath: 'assets/images/science/senses/sense_2.png',
+      soundPath: 'sounds/science/senses/smell.m4a',
     ),
     Sense(
       label: 'Sense of Taste',
       imagePath: 'assets/images/science/senses/sense_3.png',
+      soundPath: 'sounds/science/senses/taste.m4a',
     ),
     Sense(
-      label: 'Sense of Sound',
+      label: 'Sense of Hearing',
       imagePath: 'assets/images/science/senses/sense_4.png',
+      soundPath: 'sounds/science/senses/hearing.mp3',
     ),
     Sense(
       label: 'Sense of Touch',
       imagePath: 'assets/images/science/senses/sense_5.png',
+      soundPath: 'sounds/science/senses/touch.m4a',
     ),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _audioService.setOnComplete(() {});
+  }
+
+  @override
+  void dispose() {
+    _audioService.dispose();
+    super.dispose();
+  }
+
+  void _play(soundPath) async {
+    await _audioService.playFromAssets(soundPath);
+  }
+
+  void _stop() async {
+    await _audioService.stop();
+  }
+
+  void _nextCard() {
+    if (_currentIndex == senses.length - 1) {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const FinishModuleDialog(
+          route: SensesQuizScreen(),
+        ),
+      );
+    } else {
+      _carCon.nextPage();
+    }
+  }
+
+  void _previousCard() {
+    _carCon.previousPage();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,34 +128,19 @@ class _SensesScreenState extends State<SensesScreen> {
                         autoPlay: false,
                         viewportFraction: 0.8,
                         onPageChanged: (index, reason) {
-                          setState(() {
-                            _currentIndex = index;
-                          });
+                          _currentIndex = index;
+                          _stop();
                         },
                       ),
                       itemCount: senses.length,
                       itemBuilder: (context, index, realIndex) {
-                        return GestureDetector(
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              barrierDismissible: false,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  title: Text(
-                                    senses[index].label,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                );
-                              },
-                            );
+                        return SenseCard(
+                          sense: senses[index],
+                          nextCallback: _nextCard,
+                          prevCallback: _previousCard,
+                          soundCallback: () {
+                            _play(senses[index].soundPath);
                           },
-                          child: SenseCard(
-                            sense: senses[index],
-                            carCon: _carCon,
-                            currentIndex: _currentIndex,
-                            totalShapes: senses.length,
-                          ),
                         );
                       },
                     ),

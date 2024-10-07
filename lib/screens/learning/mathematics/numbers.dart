@@ -5,7 +5,7 @@ import 'package:flutter_application_1/components/mathematics/number_with_example
 import 'package:flutter_application_1/models/mathematics/number_example.dart';
 import 'package:flutter_application_1/models/mathematics/number_only.dart';
 import 'package:gap/gap.dart';
-import '../../../components/nice_button.dart';
+import '../../../components/utils/nice_button.dart';
 
 class NumbersScreen extends StatefulWidget {
   const NumbersScreen({super.key});

@@ -62,11 +62,11 @@ class SettingsDialog extends StatelessWidget {
                   color: Colors.purple,
                   label: 'Stats',
                 ),
-                SettingsIconButton(
-                  icon: Icons.language,
-                  color: Colors.orange,
-                  label: 'Language',
-                ),
+                // SettingsIconButton(
+                //   icon: Icons.language,
+                //   color: Colors.orange,
+                //   label: 'Language',
+                // ),
               ],
             ),
             const Gap(20),
