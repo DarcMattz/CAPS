@@ -7,7 +7,7 @@ import 'package:flutter_application_1/models/mathematics/number_only.dart';
 class NumberCard extends StatefulWidget {
   final NumberOnly number;
   final CarouselSliderController? parentCarCon, childCarCon;
-  final int currentIndex, totalNumbers, rowCurIndex, colCurIndex;
+  final int rowCurIndex, colCurIndex;
   final bool withSound;
 
   const NumberCard({
@@ -15,8 +15,6 @@ class NumberCard extends StatefulWidget {
     required this.number,
     this.parentCarCon,
     this.childCarCon,
-    required this.currentIndex,
-    required this.totalNumbers,
     required this.withSound,
     required this.colCurIndex,
     required this.rowCurIndex,
@@ -90,20 +88,48 @@ class _NumberCardState extends State<NumberCard> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if (widget.currentIndex > 0)
-                const CircleButton(
-                  color: Colors.amberAccent,
-                  shadowColor: Colors.amber,
-                  icon: Icons.arrow_back_rounded,
-                ),
+              CircleButton(
+                color: Colors.amberAccent,
+                shadowColor: Colors.amber,
+                icon: Icons.arrow_back_rounded,
+                method: () {
+                  if (widget.rowCurIndex > 0) {
+                    widget.childCarCon!.previousPage();
+                  } else {
+                    widget.parentCarCon!.previousPage();
+                  }
+                },
+              ),
               const SizedBox(
                 height: 10.0,
                 width: 10.0,
               ),
-              const CircleButton(
+              CircleButton(
                 color: Colors.amberAccent,
                 shadowColor: Colors.amber,
                 icon: Icons.arrow_forward_rounded,
+                method: () {
+                  if (widget.colCurIndex <= 9) {
+                    if (widget.rowCurIndex == 1) {
+                      widget.parentCarCon!.nextPage();
+                      widget.childCarCon!.animateToPage(0);
+                    } else {
+                      widget.childCarCon!.nextPage();
+                    }
+                  } else {
+                    if (widget.rowCurIndex == 9) {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) => const FinishModuleDialog(
+                          route: NumbersQuizScreen(),
+                        ),
+                      );
+                    } else {
+                      widget.childCarCon!.nextPage();
+                    }
+                  }
+                },
               ),
             ],
           ),

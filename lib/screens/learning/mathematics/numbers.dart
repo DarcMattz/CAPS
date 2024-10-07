@@ -15,356 +15,84 @@ class NumbersScreen extends StatefulWidget {
 }
 
 class _NumbersScreenState extends State<NumbersScreen> {
-  int colCurIndex = 0;
-  int rowCurIndex = 0;
   final CarouselSliderController _parentCarCon = CarouselSliderController();
-  final CarouselSliderController _childCarCon = CarouselSliderController();
 
   @override
   Widget build(BuildContext context) {
-    final List<List<Widget>> numberCards = [
+
+    final List<List> number = [
       [
-        NumberWithExampleCard(
-          number: NumberExample(
-              numberExample: 'assets/images/mathematics/1_example.png',
-              numberImage: 'assets/images/mathematics/1.png'),
-          currentIndex: 0,
-          totalNumbers: 11,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 0,
-          rowCurIndex: 0,
-        ),
-        NumberCard(
-          number:
-              NumberOnly(numberImage: 'assets/images/mathematics/trace_1.png'),
-          currentIndex: 1,
-          totalNumbers: 11,
-          withSound: false,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 0,
-          rowCurIndex: 1,
-        ),
+        NumberExample(
+            numberExample: 'assets/images/mathematics/1_example.png',
+            numberImage: 'assets/images/mathematics/1.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/trace_1.png'),
       ],
       [
-        NumberWithExampleCard(
-          number: NumberExample(
-              numberExample: 'assets/images/mathematics/2_example.png',
-              numberImage: 'assets/images/mathematics/2.png'),
-          currentIndex: 2,
-          totalNumbers: 11,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 1,
-          rowCurIndex: 0,
-        ),
-        NumberCard(
-          number:
-              NumberOnly(numberImage: 'assets/images/mathematics/trace_2.png'),
-          currentIndex: 3,
-          totalNumbers: 11,
-          withSound: false,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 1,
-          rowCurIndex: 1,
-        ),
+        NumberExample(
+            numberExample: 'assets/images/mathematics/1_example.png',
+            numberImage: 'assets/images/mathematics/2.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/trace_2.png'),
       ],
       [
-        NumberWithExampleCard(
-          number: NumberExample(
-              numberExample: 'assets/images/mathematics/3_example.png',
-              numberImage: 'assets/images/mathematics/3.png'),
-          currentIndex: 4,
-          totalNumbers: 11,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 2,
-          rowCurIndex: 0,
-        ),
-        NumberCard(
-          number:
-              NumberOnly(numberImage: 'assets/images/mathematics/trace_3.png'),
-          currentIndex: 5,
-          totalNumbers: 11,
-          withSound: false,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 2,
-          rowCurIndex: 1,
-        ),
+        NumberExample(
+            numberExample: 'assets/images/mathematics/3_example.png',
+            numberImage: 'assets/images/mathematics/3.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/trace_3.png'),
       ],
       [
-        NumberWithExampleCard(
-          number: NumberExample(
-              numberExample: 'assets/images/mathematics/4_example.png',
-              numberImage: 'assets/images/mathematics/4.png'),
-          currentIndex: 6,
-          totalNumbers: 11,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 3,
-          rowCurIndex: 0,
-        ),
-        NumberCard(
-          number:
-              NumberOnly(numberImage: 'assets/images/mathematics/trace_4.png'),
-          currentIndex: 7,
-          totalNumbers: 11,
-          withSound: false,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 3,
-          rowCurIndex: 1,
-        ),
+        NumberExample(
+            numberExample: 'assets/images/mathematics/4_example.png',
+            numberImage: 'assets/images/mathematics/4.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/trace_4.png'),
       ],
       [
-        NumberWithExampleCard(
-          number: NumberExample(
-              numberExample: 'assets/images/mathematics/5_example.png',
-              numberImage: 'assets/images/mathematics/5.png'),
-          currentIndex: 8,
-          totalNumbers: 11,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 4,
-          rowCurIndex: 0,
-        ),
-        NumberCard(
-          number:
-              NumberOnly(numberImage: 'assets/images/mathematics/trace_5.png'),
-          currentIndex: 9,
-          totalNumbers: 11,
-          withSound: false,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 4,
-          rowCurIndex: 1,
-        ),
+        NumberExample(
+            numberExample: 'assets/images/mathematics/5_example.png',
+            numberImage: 'assets/images/mathematics/5.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/trace_5.png'),
       ],
       [
-        NumberWithExampleCard(
-          number: NumberExample(
-              numberExample: 'assets/images/mathematics/6_example.png',
-              numberImage: 'assets/images/mathematics/6.png'),
-          currentIndex: 10,
-          totalNumbers: 11,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 5,
-          rowCurIndex: 0,
-        ),
-        NumberCard(
-          number:
-              NumberOnly(numberImage: 'assets/images/mathematics/trace_6.png'),
-          currentIndex: 11,
-          totalNumbers: 11,
-          withSound: false,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 5,
-          rowCurIndex: 1,
-        ),
+        NumberExample(
+            numberExample: 'assets/images/mathematics/6_example.png',
+            numberImage: 'assets/images/mathematics/6.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/trace_6.png'),
       ],
       [
-        NumberWithExampleCard(
-          number: NumberExample(
-              numberExample: 'assets/images/mathematics/7_example.png',
-              numberImage: 'assets/images/mathematics/7.png'),
-          currentIndex: 12,
-          totalNumbers: 11,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 6,
-          rowCurIndex: 0,
-        ),
-        NumberCard(
-          number:
-              NumberOnly(numberImage: 'assets/images/mathematics/trace_7.png'),
-          currentIndex: 13,
-          totalNumbers: 11,
-          withSound: false,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 6,
-          rowCurIndex: 1,
-        ),
+        NumberExample(
+            numberExample: 'assets/images/mathematics/7_example.png',
+            numberImage: 'assets/images/mathematics/7.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/trace_7.png'),
       ],
       [
-        NumberWithExampleCard(
-          number: NumberExample(
-              numberExample: 'assets/images/mathematics/8_example.png',
-              numberImage: 'assets/images/mathematics/8.png'),
-          currentIndex: 14,
-          totalNumbers: 11,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 7,
-          rowCurIndex: 0,
-        ),
-        NumberCard(
-          number:
-              NumberOnly(numberImage: 'assets/images/mathematics/trace_8.png'),
-          currentIndex: 15,
-          totalNumbers: 11,
-          withSound: false,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 7,
-          rowCurIndex: 1,
-        ),
+        NumberExample(
+            numberExample: 'assets/images/mathematics/8_example.png',
+            numberImage: 'assets/images/mathematics/8.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/trace_8.png'),
       ],
       [
-        NumberWithExampleCard(
-          number: NumberExample(
-              numberExample: 'assets/images/mathematics/9_example.png',
-              numberImage: 'assets/images/mathematics/9.png'),
-          currentIndex: 16,
-          totalNumbers: 11,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 8,
-          rowCurIndex: 0,
-        ),
-        NumberCard(
-          number:
-              NumberOnly(numberImage: 'assets/images/mathematics/trace_9.png'),
-          currentIndex: 17,
-          totalNumbers: 11,
-          withSound: false,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 8,
-          rowCurIndex: 1,
-        ),
+        NumberExample(
+            numberExample: 'assets/images/mathematics/9_example.png',
+            numberImage: 'assets/images/mathematics/9.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/trace_9.png'),
       ],
       [
-        NumberWithExampleCard(
-          number: NumberExample(
-              numberExample: 'assets/images/mathematics/10_example.png',
-              numberImage: 'assets/images/mathematics/10.png'),
-          currentIndex: 18,
-          totalNumbers: 11,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 9,
-          rowCurIndex: 0,
-        ),
-        NumberCard(
-          number:
-              NumberOnly(numberImage: 'assets/images/mathematics/trace_10.png'),
-          currentIndex: 19,
-          totalNumbers: 11,
-          withSound: false,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 9,
-          rowCurIndex: 1,
-        ),
+        NumberExample(
+            numberExample: 'assets/images/mathematics/10_example.png',
+            numberImage: 'assets/images/mathematics/10.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/trace_10.png'),
       ],
       [
-        NumberCard(
-          number: NumberOnly(numberImage: 'assets/images/mathematics/11.png'),
-          currentIndex: 20,
-          totalNumbers: 11,
-          withSound: true,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 10,
-          rowCurIndex: 0,
-        ),
-        NumberCard(
-          number: NumberOnly(numberImage: 'assets/images/mathematics/12.png'),
-          currentIndex: 21,
-          totalNumbers: 11,
-          withSound: true,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 10,
-          rowCurIndex: 1,
-        ),
-        NumberCard(
-          number: NumberOnly(numberImage: 'assets/images/mathematics/13.png'),
-          currentIndex: 22,
-          totalNumbers: 11,
-          withSound: true,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 10,
-          rowCurIndex: 2,
-        ),
-        NumberCard(
-          number: NumberOnly(numberImage: 'assets/images/mathematics/14.png'),
-          currentIndex: 23,
-          totalNumbers: 11,
-          withSound: true,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 10,
-          rowCurIndex: 3,
-        ),
-        NumberCard(
-          number: NumberOnly(numberImage: 'assets/images/mathematics/15.png'),
-          currentIndex: 24,
-          totalNumbers: 11,
-          withSound: true,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 10,
-          rowCurIndex: 4,
-        ),
-        NumberCard(
-          number: NumberOnly(numberImage: 'assets/images/mathematics/16.png'),
-          currentIndex: 25,
-          totalNumbers: 11,
-          withSound: true,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 10,
-          rowCurIndex: 5,
-        ),
-        NumberCard(
-          number: NumberOnly(numberImage: 'assets/images/mathematics/17.png'),
-          currentIndex: 26,
-          totalNumbers: 11,
-          withSound: true,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 10,
-          rowCurIndex: 6,
-        ),
-        NumberCard(
-          number: NumberOnly(numberImage: 'assets/images/mathematics/18.png'),
-          currentIndex: 27,
-          totalNumbers: 11,
-          withSound: true,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 10,
-          rowCurIndex: 7,
-        ),
-        NumberCard(
-          number: NumberOnly(numberImage: 'assets/images/mathematics/19.png'),
-          currentIndex: 28,
-          totalNumbers: 11,
-          withSound: true,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 10,
-          rowCurIndex: 8,
-        ),
-        NumberCard(
-          number: NumberOnly(numberImage: 'assets/images/mathematics/20.png'),
-          currentIndex: 29,
-          totalNumbers: 11,
-          withSound: true,
-          parentCarCon: _parentCarCon,
-          childCarCon: _childCarCon,
-          colCurIndex: 10,
-          rowCurIndex: 9,
-        ),
-      ]
+        NumberOnly(numberImage: 'assets/images/mathematics/11.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/12.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/13.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/14.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/15.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/16.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/17.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/18.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/19.png'),
+        NumberOnly(numberImage: 'assets/images/mathematics/20.png'),
+      ],
     ];
 
     return Scaffold(
@@ -396,40 +124,59 @@ class _NumbersScreenState extends State<NumbersScreen> {
               Expanded(
                 child: CarouselSlider.builder(
                   carouselController: _parentCarCon,
-                  itemCount: numberCards.length,
+                  itemCount: number.length,
                   options: CarouselOptions(
-                    scrollDirection: Axis.vertical,
-                    height: 500,
-                    enlargeCenterPage: true,
-                    enableInfiniteScroll: false,
-                    initialPage: 0,
-                    autoPlay: false,
-                    viewportFraction: 0.8,
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        colCurIndex = index;
-                      });
-                    },
-                  ),
-                  itemBuilder: (context, index, realIndex) {
+                      scrollDirection: Axis.vertical,
+                      height: 500,
+                      enlargeCenterPage: true,
+                      enableInfiniteScroll: false,
+                      initialPage: 0,
+                      autoPlay: false,
+                      viewportFraction: 0.8,),
+                  itemBuilder: (context, colIndex, realIndex) {
+                    final CarouselSliderController childCarCon =
+                        CarouselSliderController();
+
                     return GestureDetector(
                       onTap: () {},
                       child: CarouselSlider.builder(
-                        carouselController: _childCarCon,
-                        itemCount: numberCards[index].length,
+                        carouselController: childCarCon,
+                        itemCount: number[colIndex].length,
                         options: CarouselOptions(
-                          height: 400,
-                          enlargeCenterPage: true,
-                          enableInfiniteScroll: false,
-                          initialPage: 0,
-                          autoPlay: false,
-                          viewportFraction: 0.8,
-                          onPageChanged: (index, reason) {
-                            rowCurIndex = index;
-                          },
-                        ),
-                        itemBuilder: (context, cardIndex, cardRealIndex) {
-                          return numberCards[index][cardIndex];
+                            height: 400,
+                            enlargeCenterPage: true,
+                            enableInfiniteScroll: false,
+                            initialPage: 0,
+                            autoPlay: false,
+                            viewportFraction: 0.8,),
+                        itemBuilder: (context, rowIndex, cardRealIndex) {
+                          if (colIndex <= 9 && rowIndex == 0) {
+                            return NumberWithExampleCard(
+                              number: number[colIndex][rowIndex],
+                              colCurIndex: colIndex,
+                              rowCurIndex: rowIndex,
+                              parentCarCon: _parentCarCon,
+                              childCarCon: childCarCon,
+                            );
+                          } else if (colIndex <= 9 && rowIndex > 0) {
+                            return NumberCard(
+                              number: number[colIndex][rowIndex],
+                              withSound: false,
+                              colCurIndex: colIndex,
+                              rowCurIndex: rowIndex,
+                              parentCarCon: _parentCarCon,
+                              childCarCon: childCarCon,
+                            );
+                          } else {
+                            return NumberCard(
+                              number: number[colIndex][rowIndex],
+                              withSound: false,
+                              colCurIndex: colIndex,
+                              rowCurIndex: rowIndex,
+                              parentCarCon: _parentCarCon,
+                              childCarCon: childCarCon,
+                            );
+                          }
                         },
                       ),
                     );
