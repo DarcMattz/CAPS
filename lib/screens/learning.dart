@@ -65,7 +65,7 @@ class _LearningListScreenState extends State<LearningListScreen> {
                   shadowColor: Colors.yellow[800]!,
                   icon: Icons.arrow_back,
                   iconSize: 30,
-                  route: () {
+                  method: () {
                     Navigator.pop(context);
                   },
                 ),

@@ -227,7 +227,7 @@ class _VowelsScreenState extends State<VowelsScreen> {
                   shadowColor: Colors.yellow[800]!,
                   icon: Icons.arrow_back,
                   iconSize: 25,
-                  route: () {
+                  method: () {
                     Navigator.pop(context);
                   },
                 ),

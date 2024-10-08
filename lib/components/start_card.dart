@@ -68,7 +68,7 @@ class StartCard extends StatelessWidget {
                   shadowColor: Colors.yellow[800]!,
                   icon: Icons.close,
                   iconSize: 30,
-                  route: () {
+                  method: () {
                     Navigator.pop(context);
                   },
                 ),
@@ -78,7 +78,7 @@ class StartCard extends StatelessWidget {
                   shadowColor: Colors.green[800]!,
                   icon: Icons.check_rounded,
                   iconSize: 30,
-                  route: () {
+                  method: () {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (_) => route),
