@@ -19,7 +19,6 @@ class _NumbersScreenState extends State<NumbersScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     final List<List> number = [
       [
         NumberExample(
@@ -116,7 +115,7 @@ class _NumbersScreenState extends State<NumbersScreen> {
                   shadowColor: Colors.yellow[800]!,
                   icon: Icons.close,
                   iconSize: 30,
-                  route: () {
+                  method: () {
                     Navigator.pop(context);
                   },
                 ),
@@ -126,13 +125,14 @@ class _NumbersScreenState extends State<NumbersScreen> {
                   carouselController: _parentCarCon,
                   itemCount: number.length,
                   options: CarouselOptions(
-                      scrollDirection: Axis.vertical,
-                      height: 500,
-                      enlargeCenterPage: true,
-                      enableInfiniteScroll: false,
-                      initialPage: 0,
-                      autoPlay: false,
-                      viewportFraction: 0.8,),
+                    scrollDirection: Axis.vertical,
+                    height: 500,
+                    enlargeCenterPage: true,
+                    enableInfiniteScroll: false,
+                    initialPage: 0,
+                    autoPlay: false,
+                    viewportFraction: 0.8,
+                  ),
                   itemBuilder: (context, colIndex, realIndex) {
                     final CarouselSliderController childCarCon =
                         CarouselSliderController();
@@ -143,12 +143,13 @@ class _NumbersScreenState extends State<NumbersScreen> {
                         carouselController: childCarCon,
                         itemCount: number[colIndex].length,
                         options: CarouselOptions(
-                            height: 400,
-                            enlargeCenterPage: true,
-                            enableInfiniteScroll: false,
-                            initialPage: 0,
-                            autoPlay: false,
-                            viewportFraction: 0.8,),
+                          height: 400,
+                          enlargeCenterPage: true,
+                          enableInfiniteScroll: false,
+                          initialPage: 0,
+                          autoPlay: false,
+                          viewportFraction: 0.8,
+                        ),
                         itemBuilder: (context, rowIndex, cardRealIndex) {
                           if (colIndex <= 9 && rowIndex == 0) {
                             return NumberWithExampleCard(

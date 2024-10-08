@@ -70,7 +70,7 @@ class _ScienceHealthScreenState extends State<ScienceHealthScreen> {
                   shadowColor: Colors.yellow[800]!,
                   icon: Icons.arrow_back,
                   iconSize: 30,
-                  route: () {
+                  method: () {
                     Navigator.pop(context);
                   },
                 ),

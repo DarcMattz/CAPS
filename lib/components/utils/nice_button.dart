@@ -9,19 +9,21 @@ class NiceButton extends StatefulWidget {
   final Color shadowColor;
   final IconData icon;
   final double iconSize;
-  final VoidCallback? route;
+  final VoidCallback? method;
+  final bool isIconRight;
 
   const NiceButton({
     super.key,
     this.height = 44,
     this.width = 100,
     this.fontSize = 20,
+    this.isIconRight = false,
     required this.label,
     required this.color,
     required this.shadowColor,
     required this.icon,
     required this.iconSize,
-    this.route,
+    this.method,
   });
 
   @override
@@ -39,8 +41,8 @@ class _NiceButtonState extends State<NiceButton> {
         setState(() {
           _position = 4;
         });
-        if (widget.route != null) {
-          widget.route!();
+        if (widget.method != null) {
+          widget.method?.call();
         }
       },
       onTapDown: (_) {
@@ -53,80 +55,88 @@ class _NiceButtonState extends State<NiceButton> {
           _position = 4;
         });
       },
-      child: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(16),
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(3.0),
-          child: SizedBox(
-            height: widget.height + _shadowHeight,
-            width: widget.width,
-            child: Stack(
-              children: [
-                Positioned(
-                  bottom: 0,
-                  child: Container(
-                    height: widget.height,
-                    width: widget.width,
-                    decoration: BoxDecoration(
-                      color: widget.shadowColor,
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(13),
-                      ),
-                    ),
-                  ),
+      child: SizedBox(
+        height: widget.height + _shadowHeight,
+        width: widget.width,
+        child: Stack(
+          children: [
+            Positioned(
+              bottom: 0,
+              child: Container(
+                height: widget.height,
+                width: widget.width,
+                decoration: BoxDecoration(
+                  color: widget.shadowColor,
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
-                Positioned(
-                  bottom: _position,
-                  child: Container(
-                    height: widget.height,
-                    width: widget.width,
-                    decoration: BoxDecoration(
-                      color: widget.color,
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(13),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Icon(
-                          widget.icon,
-                          size: widget.iconSize,
-                          color: Colors.white,
-                          shadows: const [
-                            Shadow(
-                              blurRadius: 1.0,
-                              color: Colors.black,
-                              offset: Offset(1.0, 1.0),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          widget.label,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: widget.fontSize,
-                            shadows: const [
-                              Shadow(
-                                blurRadius: 1.0,
-                                color: Colors.black,
-                                offset: Offset(1.0, 1.0),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
+            Positioned(
+              bottom: _position,
+              child: Container(
+                height: widget.height,
+                width: widget.width,
+                decoration: BoxDecoration(
+                  color: widget.color,
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: Colors.white,
+                    width: 4,
+                  ),
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //     color: widget.shadowColor,
+                  //     offset: Offset(0, _position),
+                  //   ),
+                  // ],
+                ),
+                child: Row(
+                  mainAxisAlignment: widget.isIconRight
+                      ? MainAxisAlignment.center
+                      : MainAxisAlignment.spaceEvenly,
+                  children: [
+                    if (!widget.isIconRight)
+                      Icon(
+                        widget.icon,
+                        size: widget.iconSize,
+                        color: Colors.white,
+                        shadows: const [
+                          Shadow(
+                            color: Color(0xff000000),
+                            offset: Offset(0, 1),
+                          )
+                        ],
+                      ),
+                    Text(
+                      widget.label,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: widget.fontSize,
+                        shadows: const [
+                          Shadow(
+                            color: Color(0xff000000),
+                            offset: Offset(0, 1),
+                          )
+                        ],
+                      ),
+                    ),
+                    if (widget.isIconRight)
+                      Icon(
+                        widget.icon,
+                        size: widget.iconSize,
+                        color: Colors.white,
+                        shadows: const [
+                          Shadow(
+                            color: Color(0xff000000),
+                            offset: Offset(0, 1),
+                          )
+                        ],
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

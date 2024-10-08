@@ -129,7 +129,7 @@ class _CareScreenState extends State<CareScreen> {
                   shadowColor: Colors.yellow[800]!,
                   icon: Icons.close,
                   iconSize: 30,
-                  route: () {
+                  method: () {
                     Navigator.pop(context);
                   },
                 ),

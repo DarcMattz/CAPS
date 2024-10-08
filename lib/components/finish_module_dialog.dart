@@ -77,7 +77,7 @@ class _FinishModuleDialogState extends State<FinishModuleDialog> {
                       shadowColor: Colors.yellow[800]!,
                       icon: Icons.close,
                       iconSize: 30,
-                      route: () {
+                      method: () {
                         Navigator.pop(context);
                         Navigator.pop(context);
                       },
@@ -88,7 +88,7 @@ class _FinishModuleDialogState extends State<FinishModuleDialog> {
                       shadowColor: Colors.green[800]!,
                       icon: Icons.check_rounded,
                       iconSize: 30,
-                      route: () {
+                      method: () {
                         Navigator.pop(context);
                         Navigator.pushReplacement(
                           context,
