@@ -8,6 +8,7 @@ class NumberWithExampleCard extends StatefulWidget {
   final NumberExample number;
   final CarouselSliderController? parentCarCon, childCarCon;
   final int rowCurIndex, colCurIndex;
+  final void Function() sound;
 
   const NumberWithExampleCard({
     super.key,
@@ -16,6 +17,7 @@ class NumberWithExampleCard extends StatefulWidget {
     this.childCarCon,
     required this.colCurIndex,
     required this.rowCurIndex,
+    required this.sound,
   });
 
   @override
@@ -73,7 +75,8 @@ class _NumberWithExampleCardState extends State<NumberWithExampleCard> {
                       color: Colors.purpleAccent,
                       shadowColor: Colors.purple,
                       icon: Icons.volume_up_rounded,
-                      method: () {}),
+                      method: widget.sound,
+                  ),
                 ),
               ]),
             ),
@@ -141,7 +144,7 @@ class _NumberWithExampleCardState extends State<NumberWithExampleCard> {
                     }
                   } else {
                     if (widget.rowCurIndex == 9) {
-                      print("DOne");
+                      return;
                     } else {
                       widget.childCarCon!.nextPage();
                     }

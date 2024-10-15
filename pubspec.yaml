@@ -67,6 +67,7 @@ flutter:
     - assets/sounds/alphabet/
     - assets/sounds/shapes/
     - assets/sounds/vowels/
+    - assets/sounds/mathematics/
     - assets/sounds/science/body/
     - assets/sounds/science/care/
     - assets/sounds/science/senses/

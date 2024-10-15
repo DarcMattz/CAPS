@@ -12,12 +12,14 @@ class NumberCard extends StatefulWidget {
   final CarouselSliderController? parentCarCon, childCarCon;
   final int rowCurIndex, colCurIndex;
   final bool withSound;
+  final void Function() sound;
 
   const NumberCard({
     super.key,
     required this.number,
     this.parentCarCon,
     this.childCarCon,
+    required this.sound,
     required this.withSound,
     required this.colCurIndex,
     required this.rowCurIndex,
@@ -80,7 +82,7 @@ class _NumberCardState extends State<NumberCard> {
                         color: Colors.purpleAccent,
                         shadowColor: Colors.purple,
                         icon: Icons.volume_up_rounded,
-                        method: () {}),
+                        method: widget.sound),
                   ),
               ]),
             ),
