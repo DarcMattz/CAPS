@@ -57,9 +57,9 @@ class _MathematicsScreenState extends State<MathematicsScreen> {
                   label: "Back",
                   color: Colors.yellow,
                   shadowColor: Colors.yellow[800]!,
-                  icon: Icons.arrow_left_rounded,
-                  iconSize: 45,
-                  route: () {
+                  icon: Icons.arrow_back,
+                  iconSize: 30,
+                  method: () {
                     Navigator.pop(context);
                   },
                 ),

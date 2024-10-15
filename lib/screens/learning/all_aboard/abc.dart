@@ -462,7 +462,7 @@ class _AbcScreenState extends State<AbcScreen> {
                   shadowColor: Colors.yellow[800]!,
                   icon: Icons.arrow_back,
                   iconSize: 25,
-                  route: () {
+                  method: () {
                     Navigator.pop(context);
                   },
                 ),

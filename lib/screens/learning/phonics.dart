@@ -50,7 +50,7 @@ class _PhonicsScreenState extends State<PhonicsScreen> {
                   shadowColor: Colors.yellow[800]!,
                   icon: Icons.arrow_back,
                   iconSize: 30,
-                  route: () {
+                  method: () {
                     Navigator.pop(context);
                   },
                 ),

@@ -30,10 +30,8 @@ class _CircleButtonState extends State<CircleButton> {
         setState(() {
           _position = 4;
         });
-
         widget.method!();
       },
-
       onTapDown: (_) {
         setState(() {
           _position = 0;
@@ -78,16 +76,16 @@ class _CircleButtonState extends State<CircleButton> {
                   ),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: widget.color,
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(20),
-                        ),
+                      color: widget.color,
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(20),
+                      ),
                     ),
-                      child: Icon(
-                        widget.icon,
-                        color: Colors.white,
-                        size: 20.0,
-                      )
+                    child: Icon(
+                      widget.icon,
+                      color: Colors.white,
+                      size: 20.0,
+                    ),
                   ),
                 ),
               ),

@@ -188,7 +188,7 @@ class _NumbersScreenState extends State<NumbersScreen> {
                   shadowColor: Colors.yellow[800]!,
                   icon: Icons.close,
                   iconSize: 30,
-                  route: () {
+                  method: () {
                     Navigator.pop(context);
                   },
                 ),
